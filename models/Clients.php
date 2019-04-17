@@ -107,7 +107,6 @@ class Clients
         // if ($this->getByEmail($Email) > 0) {
         //     return "User with email address (" . $Email . ") already exists";
         // }
-        $ClientId = time();
         $query = "INSERT INTO clients(
                 ClientId,
                 FirstName,
@@ -124,12 +123,11 @@ class Clients
                 CreateUserId,
                 ModifyUserId
             ) 
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+                VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?,?,?);
                  ";
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $ClientId,
                 $FirstName,
                 $MiddleName,
                 $Surname,
@@ -144,77 +142,25 @@ class Clients
                 $CreateUserId,
                 $ModifyUserId
             ))) {
-                return $ClientId;
+                return $this->getClientByUserId($UserId);
             }
         } catch (Exception $e) {
             return $e;
         }
     }
 
-    //Add Update User 
-    public function update(
-        $Title,
-        $FirstName,
-        $Surname,
-        $IdNumber,
-        $DOB,
-        $Gender,
-        $Email,
-        $Cellphone,
-        $AddressLine1,
-        $City,
-        $Province,
-        $PostCode,
-        $CreateUserId,
-        $ModifyUserId,
-        $StatusId,
-        $PatientId
-    ) {
-        // I need to check if u not taking someones email
-        $query = "UPDATE  patient  SET
-                                        Title = ?
-                                        ,FirstName = ?
-                                        ,Surname = ?
-                                        ,IdNumber = ?
-                                        ,DOB = ?
-                                        ,Gender = ?
-                                        ,Email = ?
-                                        ,Cellphone = ?
-                                        ,AddressLine1 = ?
-                                        ,City = ?
-                                        ,Province = ?
-                                        ,PostCode = ?
-                                        ,CreateUserId = ?
-                                        ,ModifyUserId = ?
-                                        ,StatusId = ?
-                                        WHERE PatientId=?
+ 
+    public function getClientByUserId($UserId)
+    {
 
-                             
-                   ";
-        try {
-            $stmt = $this->conn->prepare($query);
-            if ($stmt->execute(array(
-                $Title,
-                $FirstName,
-                $Surname,
-                $IdNumber,
-                $DOB,
-                $Gender,
-                $Email,
-                $Cellphone,
-                $AddressLine1,
-                $City,
-                $Province,
-                $PostCode,
-                $CreateUserId,
-                $ModifyUserId,
-                $StatusId,
-                $PatientId
-            ))) {
-                return $PatientId;
-            }
-        } catch (Exception $e) {
-            return $e;
+        $query = "SELECT ClientId FROM clients WHERE UserId = ?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($UserId));
+
+        if ($stmt->rowCount()) {
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            return  $user['ClientId'];
         }
     }
 }

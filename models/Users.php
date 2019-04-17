@@ -55,8 +55,7 @@ class Users
         // if ($this->getByEmail($Email) > 0) {
         //     return "User with email address (" . $Email . ") already exists";
         // }
-        $UserId = time();
-        
+
         $query = "INSERT INTO users(
                 UserId,
                 Email,
@@ -66,12 +65,11 @@ class Users
                 ModifyUserId,
                 StatusId
                 ) 
-                    VALUES (?,?,?,?,?,?,?);
+                    VALUES (UUID(),?,?,?,?,?,?);
                      ";
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $UserId,
                 $Email,
                 $CellphoneNumber,
                 $Password,
@@ -79,10 +77,33 @@ class Users
                 $ModifyUserId,
                 $StatusId
             ))) {
-                return $UserId;
+                return $this->getUserByEmail($Email);
             }
         } catch (Exception $e) {
             return $e;
+        }
+    }
+    public function getByEmail($email)
+    {
+
+        $query = "SELECT * FROM users WHERE Email = ?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($email));
+
+        return $stmt->rowCount();
+    }
+    public function getUserByEmail($email)
+    {
+
+        $query = "SELECT UserId FROM users WHERE Email = ?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($email));
+
+        if ($stmt->rowCount()) {
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            return  $user['UserId'];
         }
     }
 }
