@@ -95,50 +95,56 @@ class Clients
         $Surname,
         $IDNumber,
         $UserId,
-        $CellphoneNumber,
         $Gender,
         $Province,
         $City,
         $PostCode,
         $Address,
-        $StatusId
+        $StatusId,
+        $CreateUserId,
+        $ModifyUserId
     ) {
-        if ($this->getByEmail($Email) > 0) {
-            return "User with email address (" . $Email . ") already exists";
-        }
+        // if ($this->getByEmail($Email) > 0) {
+        //     return "User with email address (" . $Email . ") already exists";
+        // }
+        $ClientId = time();
         $query = "INSERT INTO clients(
-            FirstName,
-            MiddleName,
-            Surname,
-            IDNumber,
-            Email,
-            CellphoneNumber,
-            Gender,
-            Province,
-            City,
-            PostCode,
-            Address,
-            StatusId
+                ClientId,
+                FirstName,
+                MiddleName,
+                Surname,
+                IDNumber,
+                UserId,
+                Gender,
+                Province,
+                City,
+                PostCode,
+                Address,
+                StatusId,
+                CreateUserId,
+                ModifyUserId
             ) 
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,?);
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);
                  ";
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
+                $ClientId,
                 $FirstName,
                 $MiddleName,
                 $Surname,
                 $IDNumber,
-                $Email,
-                $CellphoneNumber,
+                $UserId,
                 $Gender,
                 $Province,
                 $City,
                 $PostCode,
                 $Address,
-                $StatusId
+                $StatusId,
+                $CreateUserId,
+                $ModifyUserId
             ))) {
-                return $this->getUserByEmail($Email);
+                return $ClientId;
             }
         } catch (Exception $e) {
             return $e;

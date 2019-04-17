@@ -13,8 +13,6 @@ $CreateUserId = $data->CreateUserId;
 $ModifyUserId = $CreateUserId;
 $StatusId = $data->StatusId;
 
-//create client data
-
 
 //check for email
 if ($Email == '') {
@@ -40,4 +38,35 @@ $result = $user->add(
     $StatusId
 );
 
-echo json_encode($result);
+
+//create client data
+$UserId = $result;
+$FirstName = $data->FirstName;
+$MiddleName = $data->MiddleName;
+$Surname = $data->Surname;
+$IDNumber = $data->IDNumber;
+$Gender = $data->Gender;
+$Province = $data->Province;
+$City = $data->City;
+$PostCode = $data->PostCode;
+$Address = $data->Address;
+
+$client = new Clients($db);
+
+$insertClientId = $client->add(
+    $FirstName,
+    $MiddleName,
+    $Surname,
+    $IDNumber,
+    $UserId,
+    $Gender,
+    $Province,
+    $City,
+    $PostCode,
+    $Address,
+    $StatusId,
+    $CreateUserId,
+    $ModifyUserId
+);
+
+echo json_encode($insertClientId);
