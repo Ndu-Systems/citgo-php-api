@@ -106,4 +106,29 @@ class Users
             return  $user['UserId'];
         }
     }
+    //Get a user
+    public function getUserByEmailandPassword($email, $password)
+    {
+
+        $query = "SELECT         
+        u.UserId,  
+        r.RoleId as Role
+        FROM 
+        users u JOIN 
+        userroles ur on u.UserId = ur.UserId 
+        LEFT JOIN roles r on ur.RoleId = r.RoleId
+        WHERE 
+        Email =  ?
+        AND 
+        Password = ?
+        ";
+
+        //Prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        //Execute query
+        $stmt->execute(array($email, $password));
+
+        return $stmt;
+    }
 }
