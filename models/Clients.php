@@ -65,29 +65,17 @@ class Clients
         return $stmt;
     }
     //Get user by Email
-    public function getByEmail($email)
+    public function getByUserId($UserId)
     {
 
-        $query = "SELECT * FROM patient WHERE Email = ?";
+        $query = "SELECT * FROM users WHERE UserId = ?";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(array($email));
+        $stmt->execute(array($UserId));
 
         return $stmt->rowCount();
     }
-    //Get recently added user
-    public function getUserByEmail($email)
-    {
-
-        $query = "SELECT * FROM patient WHERE Email = ?";
-
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute(array($email));
-
-        if ($stmt->rowCount()) {
-            return $patient = $stmt->fetch(PDO::FETCH_ASSOC);
-        }
-    }
+ 
     //Add user 
     public function add(
         $FirstName,
@@ -102,11 +90,12 @@ class Clients
         $Address,
         $StatusId,
         $CreateUserId,
-        $ModifyUserId
+        $ModifyUserId,
+        $Email
     ) {
-        // if ($this->getByEmail($Email) > 0) {
-        //     return "User with email address (" . $Email . ") already exists";
-        // }
+        if ($this->getByUserId($UserId) > 0) {
+            return "User with email address (" . $Email . ") already exists";
+        }
         $query = "INSERT INTO clients(
                 ClientId,
                 FirstName,

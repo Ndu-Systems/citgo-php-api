@@ -66,7 +66,8 @@ $insertClientId = $client->add(
     $Address,
     $StatusId,
     $CreateUserId,
-    $ModifyUserId
+    $ModifyUserId,
+    $Email
 );
 
 echo json_encode($insertClientId);
