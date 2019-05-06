@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2019 at 06:25 PM
+-- Generation Time: May 06, 2019 at 06:44 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -80,6 +80,31 @@ INSERT INTO `beneficiaries` (`BeneficiaryId`, `ClientId`, `Name`, `Surname`, `ID
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `clientinvestments`
+--
+
+CREATE TABLE `clientinvestments` (
+  `Id` varchar(225) NOT NULL,
+  `ClientId` varchar(225) NOT NULL,
+  `InvestmentId` varchar(225) NOT NULL,
+  `CreateUserId` varchar(225) NOT NULL,
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyUserId` varchar(225) NOT NULL,
+  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `StatusId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `clientinvestments`
+--
+
+INSERT INTO `clientinvestments` (`Id`, `ClientId`, `InvestmentId`, `CreateUserId`, `CreateDate`, `ModifyUserId`, `ModifyDate`, `StatusId`) VALUES
+('3a84e55c-701d-11e9-9519-f48e38e878a3', '598a9063-6f66-11e9-bde7-f48e38e878a3', '9ce8593f-701c-11e9-9519-f48e38e878a3', '1', '2019-05-06 18:37:24', '1', '2019-05-06 18:37:24', 1),
+('3a850421-701d-11e9-9519-f48e38e878a3', '598a9063-6f66-11e9-bde7-f48e38e878a3', 'd2507a51-701c-11e9-9519-f48e38e878a3', '1', '2019-05-06 18:37:24', '1', '2019-05-06 18:37:24', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `clients`
 --
 
@@ -114,6 +139,23 @@ INSERT INTO `clients` (`ClientId`, `UserId`, `FirstName`, `MiddleName`, `Surname
 ('9b35f086-61b0-11e9-ac92-80fa5b45280e', '9b351084-61b0-11e9-ac92-80fa5b45280e', 'fsdf', 'fdsf', 'fdsff', 'fds', 'fds', '54354', 'Male', 'fdsf', '43', NULL, '2019-04-18 10:04:36', 'SYSTEM_WEB', '2019-04-18 10:04:36', 'SYSTEM_WEB', 1),
 ('a39d846a-61b3-11e9-ac92-80fa5b45280e', 'a39d2479-61b3-11e9-ac92-80fa5b45280e', 'hgfhh', 'gfh', 'hfgh', '4343', 'fdsfd', '545', 'Male', 'fdfd', '434', NULL, '2019-04-18 10:26:19', 'SYSTEM_WEB', '2019-04-18 10:26:19', 'SYSTEM_WEB', 1),
 ('b37f09ea-61b0-11e9-ac92-80fa5b45280e', 'b37eb2ca-61b0-11e9-ac92-80fa5b45280e', 'dsad', 'dsad', 'dasd', 'FSD', 'FDSF', '4324', 'Male', 'FDS', '432', NULL, '2019-04-18 10:05:17', 'SYSTEM_WEB', '2019-04-18 10:05:17', 'SYSTEM_WEB', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clientwithdrawals`
+--
+
+CREATE TABLE `clientwithdrawals` (
+  `Id` varchar(225) NOT NULL,
+  `ClientId` varchar(225) NOT NULL,
+  `WithdrawalId` varchar(225) NOT NULL,
+  `CreateUserId` varchar(225) NOT NULL,
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyUserId` varchar(225) NOT NULL,
+  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `StatusId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -153,6 +195,14 @@ CREATE TABLE `investment` (
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `investment`
+--
+
+INSERT INTO `investment` (`InvestmentId`, `Amount`, `Profit`, `Total`, `Name`, `Type`, `InvestmentDate`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('9ce8593f-701c-11e9-9519-f48e38e878a3', '5000', '0', '0', 'Test Investment', 'Month-To-Month', '2019-05-06 18:33:00', '2019-05-06 18:33:00', '1', '2019-05-06 18:33:00', '1', 1),
+('d2507a51-701c-11e9-9519-f48e38e878a3', '5000', '0', '0', 'Test Investment 2', 'Yearly', '2019-05-06 18:34:30', '2019-05-06 18:34:30', '1', '2019-05-06 18:34:30', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -207,23 +257,6 @@ CREATE TABLE `transactionhistory` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userinvestments`
---
-
-CREATE TABLE `userinvestments` (
-  `Id` varchar(225) NOT NULL,
-  `UserId` varchar(225) NOT NULL,
-  `InvestmentId` varchar(225) NOT NULL,
-  `CreateUserId` varchar(225) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ModifyUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `StatusId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `userroles`
 --
 
@@ -269,23 +302,6 @@ INSERT INTO `users` (`UserId`, `Email`, `CellphoneNumber`, `Password`, `CreateDa
 ('a39d2479-61b3-11e9-ac92-80fa5b45280e', 'gfd@dsd', '434', 'pass@123!', '2019-04-18 10:26:19', 'SYSTEM_WEB', '2019-04-18 10:26:19', 'SYSTEM_WEB', 1),
 ('b37eb2ca-61b0-11e9-ac92-80fa5b45280e', 'fsd@DSAD', '343', 'pass@123!', '2019-04-18 10:05:17', 'SYSTEM_WEB', '2019-04-18 10:05:17', 'SYSTEM_WEB', 1),
 ('f1dc8dbf-6f67-11e9-bde7-f48e38e878a3', 'magwaza@mail.com', '0748508258', 'pass@123!', '2019-05-05 20:59:44', 'SYSTEM_WEB', '2019-05-05 20:59:44', 'SYSTEM_WEB', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `userwithdrawals`
---
-
-CREATE TABLE `userwithdrawals` (
-  `Id` varchar(225) NOT NULL,
-  `UserId` varchar(225) NOT NULL,
-  `WithdrawalId` varchar(225) NOT NULL,
-  `CreateUserId` varchar(225) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ModifyUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `StatusId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
