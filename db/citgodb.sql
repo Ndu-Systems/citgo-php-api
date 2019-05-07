@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2019 at 06:44 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Generation Time: May 07, 2019 at 09:27 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -220,6 +220,13 @@ CREATE TABLE `roles` (
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`RoleId`, `Description`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+(2, 'Client', '2019-05-06 21:48:02', 'me', '2019-05-06 21:48:02', 'me', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -270,6 +277,13 @@ CREATE TABLE `userroles` (
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `userroles`
+--
+
+INSERT INTO `userroles` (`Id`, `UserId`, `RoleId`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+(1, '19c58f7b-6f68-11e9-bde7-f48e38e878a3', '2', '2019-05-06 00:00:00', 'me', '2019-05-06 00:00:00', 'me', 1);
 
 -- --------------------------------------------------------
 
@@ -384,7 +398,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `RoleId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `RoleId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `statuses`
