@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2019 at 03:52 PM
+-- Generation Time: May 08, 2019 at 04:16 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -207,7 +207,34 @@ CREATE TABLE `investment` (
 
 INSERT INTO `investment` (`InvestmentId`, `Amount`, `Profit`, `Total`, `Name`, `Type`, `InvestmentDate`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
 ('9ce8593f-701c-11e9-9519-f48e38e878a3', '5000', '0', '0', 'Test Investment', 'Month-To-Month', '2019-05-06 18:33:00', '2019-05-06 18:33:00', '1', '2019-05-06 18:33:00', '1', 1),
-('d2507a51-701c-11e9-9519-f48e38e878a3', '5000', '0', '0', 'Test Investment 2', 'Yearly', '2019-05-06 18:34:30', '2019-05-06 18:34:30', '1', '2019-05-06 18:34:30', '1', 1);
+('d2507a51-701c-11e9-9519-f48e38e878a3', '5000', '0', '0', 'Test Investment 2', 'Yearly', '2019-05-06 18:34:30', '2019-05-06 18:34:30', '1', '2019-05-06 18:34:30', '1', 1),
+('d2507a51-701c-11e9-9519-f48e58e878a3', '600', '0', '0', 'Test Investment 2', 'Yearly', '2019-05-06 18:34:30', '2019-05-06 18:34:30', '1', '2019-05-06 18:34:30', '1', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profit`
+--
+
+CREATE TABLE `profit` (
+  `ProfitId` varchar(255) NOT NULL,
+  `InvestmentId` varchar(255) NOT NULL,
+  `ProfitAmount` decimal(20,0) NOT NULL,
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateUserId` varchar(255) NOT NULL,
+  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyUserId` varchar(255) NOT NULL,
+  `StatusId` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `profit`
+--
+
+INSERT INTO `profit` (`ProfitId`, `InvestmentId`, `ProfitAmount`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('9ce8593f-701c-11e9-9519-f48e38e87eee', '9ce8593f-701c-11e9-9519-f48e38e878a3', '450', '2019-03-31 00:00:00', 'sys', '2019-05-08 16:15:08', 'sys', 1),
+('9ce8593f-701c-11e9-9519-f48e38e87hhh', '9ce8593f-701c-11e9-9519-f48e38e878a3', '300', '2019-02-28 00:00:00', 'sys', '2019-05-08 16:15:08', 'sys', 1),
+('9ce8593f-701c-11e9-9519-f48e38e87klk', '9ce8593f-701c-11e9-9519-f48e38e878a3', '750', '2019-04-30 00:00:00', 'sys', '2019-05-08 16:15:08', 'sys', 1);
 
 -- --------------------------------------------------------
 
@@ -257,7 +284,7 @@ CREATE TABLE `statuses` (
 CREATE TABLE `transactionhistory` (
   `TransactionHistoryId` varchar(225) NOT NULL,
   `Action` varchar(225) NOT NULL,
-  `PayLoad` text NOT NULL,
+  `PayLoad` text,
   `UserId` varchar(225) NOT NULL,
   `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CreateUserId` varchar(225) NOT NULL,
@@ -364,16 +391,40 @@ ALTER TABLE `beneficiaries`
   ADD PRIMARY KEY (`BeneficiaryId`);
 
 --
+-- Indexes for table `clientinvestments`
+--
+ALTER TABLE `clientinvestments`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indexes for table `clients`
 --
 ALTER TABLE `clients`
   ADD PRIMARY KEY (`ClientId`);
 
 --
+-- Indexes for table `clientwithdrawals`
+--
+ALTER TABLE `clientwithdrawals`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indexes for table `documents`
 --
 ALTER TABLE `documents`
   ADD PRIMARY KEY (`DocumentId`);
+
+--
+-- Indexes for table `investment`
+--
+ALTER TABLE `investment`
+  ADD PRIMARY KEY (`InvestmentId`);
+
+--
+-- Indexes for table `profit`
+--
+ALTER TABLE `profit`
+  ADD PRIMARY KEY (`ProfitId`);
 
 --
 -- Indexes for table `roles`
@@ -394,10 +445,22 @@ ALTER TABLE `transactionhistory`
   ADD PRIMARY KEY (`TransactionHistoryId`);
 
 --
+-- Indexes for table `userroles`
+--
+ALTER TABLE `userroles`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`UserId`);
+
+--
+-- Indexes for table `withdrawal`
+--
+ALTER TABLE `withdrawal`
+  ADD PRIMARY KEY (`WithdrawalId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
