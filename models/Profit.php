@@ -24,6 +24,7 @@ class Profit
                     i.Amount AS InvestmentAmount,
                     i.Name as InvestmentName,
                     i.InvestmentId,
+                    p.ProfitId ,
                     p.ProfitAmount,
                     p.CreateDate,
                     p.StatusId AS ProfitId,
