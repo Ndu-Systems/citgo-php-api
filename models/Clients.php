@@ -91,11 +91,10 @@ class Clients
         $StatusId,
         $CreateUserId,
         $ModifyUserId,
-        $Email
+        $Email,
+        $Country
     ) {
-        if ($this->getByUserId($UserId) > 0) {
-            return "User with email address (" . $Email . ") already exists";
-        }
+        
         $query = "INSERT INTO clients(
                 ClientId,
                 FirstName,
@@ -106,13 +105,14 @@ class Clients
                 Gender,
                 Province,
                 City,
+                Country,
                 PostCode,
                 Address,
                 StatusId,
                 CreateUserId,
                 ModifyUserId
             ) 
-                VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?,?,?);
+                VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?,?,?,?);
                  ";
         try {
             $stmt = $this->conn->prepare($query);
@@ -125,6 +125,7 @@ class Clients
                 $Gender,
                 $Province,
                 $City,
+                $Country,
                 $PostCode,
                 $Address,
                 $StatusId,

@@ -50,6 +50,7 @@ $Province = $data->Province;
 $City = $data->City;
 $PostCode = $data->PostCode;
 $Address = $data->Address;
+$Country = $data->Country;
 
 $client = new Clients($db);
 
@@ -67,7 +68,8 @@ $insertClientId = $client->add(
     $StatusId,
     $CreateUserId,
     $ModifyUserId,
-    $Email
+    $Email,
+    $Country
 );
 
 echo json_encode($insertClientId);

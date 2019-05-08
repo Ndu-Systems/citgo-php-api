@@ -52,9 +52,9 @@ class Users
         $StatusId
 
     ) {
-        // if ($this->getByEmail($Email) > 0) {
-        //     return "User with email address (" . $Email . ") already exists";
-        // }
+        if ($this->getByEmail($Email) > 0) {
+            return "User with email address (" . $Email . ") already exists";
+        }
 
         $query = "INSERT INTO users(
                 UserId,
