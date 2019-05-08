@@ -34,4 +34,20 @@ class Investments {
             
             return $stmt;
         }
+
+        // insert investment
+        public function insert(
+            $Amount, 
+            $Profit, 
+            $Total, 
+            $Name, 
+            $Type, 
+            $InvestmentDate, 
+            $CreateUserId, 
+            $ModifyUserId, 
+            $StatusId
+        )
+        {
+           $query = "";
+        }
 }
