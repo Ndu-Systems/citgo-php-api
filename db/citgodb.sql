@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2019 at 04:16 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: May 08, 2019 at 08:45 PM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -83,31 +83,6 @@ INSERT INTO `beneficiaries` (`BeneficiaryId`, `ClientId`, `Name`, `Surname`, `ID
 -- --------------------------------------------------------
 
 --
--- Table structure for table `clientinvestments`
---
-
-CREATE TABLE `clientinvestments` (
-  `Id` varchar(225) NOT NULL,
-  `ClientId` varchar(225) NOT NULL,
-  `InvestmentId` varchar(225) NOT NULL,
-  `CreateUserId` varchar(225) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ModifyUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `StatusId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `clientinvestments`
---
-
-INSERT INTO `clientinvestments` (`Id`, `ClientId`, `InvestmentId`, `CreateUserId`, `CreateDate`, `ModifyUserId`, `ModifyDate`, `StatusId`) VALUES
-('3a84e55c-701d-11e9-9519-f48e38e878a3', '598a9063-6f66-11e9-bde7-f48e38e878a3', '9ce8593f-701c-11e9-9519-f48e38e878a3', '1', '2019-05-06 18:37:24', '1', '2019-05-06 18:37:24', 1),
-('3a850421-701d-11e9-9519-f48e38e878a3', '598a9063-6f66-11e9-bde7-f48e38e878a3', 'd2507a51-701c-11e9-9519-f48e38e878a3', '1', '2019-05-06 18:37:24', '1', '2019-05-06 18:37:24', 1);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `clients`
 --
 
@@ -137,13 +112,12 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`ClientId`, `UserId`, `FirstName`, `MiddleName`, `Surname`, `Province`, `Address`, `IDNumber`, `Gender`, `Country`, `City`, `PostCode`, `ParentId`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
-('46af11e0-7198-11e9-9e99-80fa5b45280e', '46ae4982-7198-11e9-9e99-80fa5b45280e', 'sadad', 'sadsad', 'dssadsa', '32dsad', 'Not needed', '213213', 'Male', 'Eswatini', 'fdsfds', '0000', NULL, '2019-05-08 15:50:44', 'SYSTEM_WEB', '2019-05-08 15:50:44', 'SYSTEM_WEB', 1),
-('598a9063-6f66-11e9-bde7-f48e38e878a3', '5989f18f-6f66-11e9-bde7-f48e38e878a3', 'Nduduzo', 'dsfds', 'Magwaza', 'Gauteng', 'Angular STREETS', '3432432', 'Male', NULL, 'Johannesburg', '2194', NULL, '2019-05-05 20:48:19', 'SYSTEM_WEB', '2019-05-05 20:48:19', 'SYSTEM_WEB', 1),
-('606563b9-6f65-11e9-bde7-f48e38e878a3', '60622a96-6f65-11e9-bde7-f48e38e878a3', 'Nduduzo', NULL, 'Magwaza', 'Gauteng', 'Angular STREETS', '3242343243', 'Male', NULL, 'Johannesburg', '2194', NULL, '2019-05-05 20:41:21', 'SYSTEM_WEB', '2019-05-05 20:41:21', 'SYSTEM_WEB', 1),
-('8d82242c-61af-11e9-ac92-80fa5b45280e', '8d81d1a0-61af-11e9-ac92-80fa5b45280e', 'lkjll', 'jkll', 'jkl', 'hgfh', 'hgfh', '78658', 'Female', NULL, 'g', '566', NULL, '2019-04-18 09:57:03', 'SYSTEM_WEB', '2019-04-18 09:57:03', 'SYSTEM_WEB', 1),
-('9b35f086-61b0-11e9-ac92-80fa5b45280e', '9b351084-61b0-11e9-ac92-80fa5b45280e', 'fsdf', 'fdsf', 'fdsff', 'fds', 'fds', '54354', 'Male', NULL, 'fdsf', '43', NULL, '2019-04-18 10:04:36', 'SYSTEM_WEB', '2019-04-18 10:04:36', 'SYSTEM_WEB', 1),
-('a39d846a-61b3-11e9-ac92-80fa5b45280e', 'a39d2479-61b3-11e9-ac92-80fa5b45280e', 'hgfhh', 'gfh', 'hfgh', '4343', 'fdsfd', '545', 'Male', NULL, 'fdfd', '434', NULL, '2019-04-18 10:26:19', 'SYSTEM_WEB', '2019-04-18 10:26:19', 'SYSTEM_WEB', 1),
-('b37f09ea-61b0-11e9-ac92-80fa5b45280e', 'b37eb2ca-61b0-11e9-ac92-80fa5b45280e', 'dsad', 'dsad', 'dasd', 'FSD', 'FDSF', '4324', 'Male', NULL, 'FDS', '432', NULL, '2019-04-18 10:05:17', 'SYSTEM_WEB', '2019-04-18 10:05:17', 'SYSTEM_WEB', 1);
+('46af11e0-7198-11e9-9e99-80fa5b45280e', '46ae4982-7198-11e9-9e99-80fa5b45280e', 'sadad', 'sadsad', 'dssadsa', '32dsad', 'Not needed', '213213', 'Male', 'South Africa', 'fdsfds', '0000', NULL, '2019-05-08 15:50:44', 'SYSTEM_WEB', '2019-05-08 15:50:44', 'SYSTEM_WEB', 1),
+('598a9063-6f66-11e9-bde7-f48e38e878a3', '5989f18f-6f66-11e9-bde7-f48e38e878a3', 'Nduduzo', 'dsfds', 'Magwaza', 'Gauteng', 'Angular STREETS', '3432432', 'Male', 'South Africa', 'Johannesburg', '2194', NULL, '2019-05-05 20:48:19', 'SYSTEM_WEB', '2019-05-05 20:48:19', 'SYSTEM_WEB', 1),
+('606563b9-6f65-11e9-bde7-f48e38e878a3', '60622a96-6f65-11e9-bde7-f48e38e878a3', 'Nduduzo', NULL, 'Magwaza', 'Gauteng', 'Angular STREETS', '3242343243', 'Male', 'South Africa', 'Johannesburg', '2194', NULL, '2019-05-05 20:41:21', 'SYSTEM_WEB', '2019-05-05 20:41:21', 'SYSTEM_WEB', 1),
+('8d82242c-61af-11e9-ac92-80fa5b45280e', '8d81d1a0-61af-11e9-ac92-80fa5b45280e', 'lkjll', 'jkll', 'jkl', 'hgfh', 'hgfh', '78658', 'Female', 'South Africa', 'g', '566', NULL, '2019-04-18 09:57:03', 'SYSTEM_WEB', '2019-04-18 09:57:03', 'SYSTEM_WEB', 1),
+('a39d846a-61b3-11e9-ac92-80fa5b45280e', '19c58f7b-6f68-11e9-bde7-f48e38e878a3\r\n', 'Test Client', 'Test', 'Testing', 'Gauteng', '', '925042254335466648', 'Male', 'South Africa', 'fdfd', '434', NULL, '2019-04-18 10:26:19', 'SYSTEM_WEB', '2019-04-18 10:26:19', 'SYSTEM_WEB', 1),
+('a39d846a-61b3-11e9-ac92-80fa5b452iie', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 'Nkuleko', 'Test', 'Testing', 'Gauteng', '', '925042254335466648', 'Male', 'South Africa', 'fdfd', '434', NULL, '2019-04-18 10:26:19', 'SYSTEM_WEB', '2019-04-18 10:26:19', 'SYSTEM_WEB', 1);
 
 -- --------------------------------------------------------
 
@@ -188,6 +162,7 @@ CREATE TABLE `documents` (
 
 CREATE TABLE `investment` (
   `InvestmentId` varchar(225) NOT NULL,
+  `ClientId` varchar(225) NOT NULL,
   `Amount` decimal(10,0) NOT NULL,
   `Profit` decimal(10,0) NOT NULL,
   `Total` decimal(10,0) DEFAULT NULL,
@@ -205,10 +180,10 @@ CREATE TABLE `investment` (
 -- Dumping data for table `investment`
 --
 
-INSERT INTO `investment` (`InvestmentId`, `Amount`, `Profit`, `Total`, `Name`, `Type`, `InvestmentDate`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
-('9ce8593f-701c-11e9-9519-f48e38e878a3', '5000', '0', '0', 'Test Investment', 'Month-To-Month', '2019-05-06 18:33:00', '2019-05-06 18:33:00', '1', '2019-05-06 18:33:00', '1', 1),
-('d2507a51-701c-11e9-9519-f48e38e878a3', '5000', '0', '0', 'Test Investment 2', 'Yearly', '2019-05-06 18:34:30', '2019-05-06 18:34:30', '1', '2019-05-06 18:34:30', '1', 1),
-('d2507a51-701c-11e9-9519-f48e58e878a3', '600', '0', '0', 'Test Investment 2', 'Yearly', '2019-05-06 18:34:30', '2019-05-06 18:34:30', '1', '2019-05-06 18:34:30', '1', 1);
+INSERT INTO `investment` (`InvestmentId`, `ClientId`, `Amount`, `Profit`, `Total`, `Name`, `Type`, `InvestmentDate`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('9ce8593f-701c-11e9-9519-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b45280e', '5000', '0', '0', 'Test Investment', 'Month-To-Month', '2019-05-06 18:33:00', '2019-05-06 18:33:00', '1', '2019-05-06 18:33:00', '1', 1),
+('d2507a51-701c-11e9-9519-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b45280e', '5000', '0', '0', 'Test Investment 2', 'Yearly', '2019-05-06 18:34:30', '2019-05-06 18:34:30', '1', '2019-05-06 18:34:30', '1', 1),
+('d2507a51-701c-11e9-9519-f48e58e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b45280e', '600', '0', '0', 'Test Investment 2', 'Yearly', '2019-05-06 18:34:30', '2019-05-06 18:34:30', '1', '2019-05-06 18:34:30', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -389,12 +364,6 @@ ALTER TABLE `bankingdetails`
 --
 ALTER TABLE `beneficiaries`
   ADD PRIMARY KEY (`BeneficiaryId`);
-
---
--- Indexes for table `clientinvestments`
---
-ALTER TABLE `clientinvestments`
-  ADD PRIMARY KEY (`Id`);
 
 --
 -- Indexes for table `clients`

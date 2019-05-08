@@ -112,11 +112,13 @@ class Users
 
         $query = "SELECT         
         u.UserId,  
-        r.RoleId as Role
+        r.RoleId as Role,
+        c.ClientId
         FROM 
         users u JOIN 
         userroles ur on u.UserId = ur.UserId 
         LEFT JOIN roles r on ur.RoleId = r.RoleId
+        LEFT JOIN clients c on u.UserId = c.UserId
         WHERE 
         Email =  ?
         AND 
