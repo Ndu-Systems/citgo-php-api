@@ -3,7 +3,7 @@ include_once '../../config/Database.php';
 include_once '../../models/Profit.php';
 
 
-$InvestmentId = $_GET['InvestmentId'];
+$clentId = $_GET['clentId'];
 //connect to db
 $database = new Database();
 $db = $database->connect();
@@ -12,7 +12,7 @@ $db = $database->connect();
 
 $profit = new Profit($db);
 
-$result = $profit->getClientProfit($InvestmentId);
+$result = $profit->getClientProfit($clentId);
 $outputList = Array();
 
 if($result->rowCount()){
