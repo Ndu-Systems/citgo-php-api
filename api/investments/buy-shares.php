@@ -19,7 +19,15 @@ $investment = new Investments($db);
 $result = $investment->insert($Amount,$ClientId,$Name,$Type);
 
 if($result > 0){
-    echo json_encode($result);
+    $output = $investment->readByClientId($ClientId,1);
+    $outPut = array();
+    
+    if($output->rowCount()){
+        $investments = $output->fetchAll(PDO::FETCH_ASSOC);
+        $outPut['investments'] = $investments;
+    
+    }
+    echo json_encode($outPut);
 }
 else {
     echo ("internal server error;");
