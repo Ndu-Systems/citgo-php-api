@@ -12,11 +12,12 @@ $db = $database->connect();
 $investments = new Investments($db);
 
 $result = $investments->readByClientId($ClientId,1);
+$outPut = array();
 
 if($result->rowCount()){
     $investments = $result->fetchAll(PDO::FETCH_ASSOC);
+    $outPut['investments'] = $investments;
+
 }
-$outPut = array();
-$outPut['investments'] = $investments;
 echo json_encode($outPut);
 
