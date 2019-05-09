@@ -69,7 +69,29 @@ class Investments {
 
         public function readByClientId($ClientId, $StatusId)
         {
-            $query = "SELECT * FROM investment where ClientId = ? AND StatusId = ?";
+            $query = "
+            SELECT 
+            InvestmentId,
+            ClientId,
+            Amount,
+            Profit,
+            Total,
+            Name,
+            Type,
+            InvestmentDate,
+            CreateDate,
+            CreateUserId,
+            ModifyDate,
+            ModifyUserId,
+            StatusId,
+            CASE
+            WHEN StatusId = 1 THEN 'ACTIVE'
+            WHEN StatusId = 2 THEN 'PENDING'
+            ELSE 'INACTIVE'
+            END AS Status
+            FROM
+            investment
+            where ClientId = ? AND StatusId = ?";
 
             // prepare query statement
             $stmt = $this->conn->prepare($query);
