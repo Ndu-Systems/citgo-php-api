@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2019 at 08:45 PM
+-- Generation Time: May 09, 2019 at 09:54 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -181,9 +181,14 @@ CREATE TABLE `investment` (
 --
 
 INSERT INTO `investment` (`InvestmentId`, `ClientId`, `Amount`, `Profit`, `Total`, `Name`, `Type`, `InvestmentDate`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('1e5d8a52-71d3-11e9-ba03-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '25000', '0', '0', 'New makes', 'Month-to-month', '2019-05-08 22:51:29', '2019-05-08 22:51:29', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-08 22:51:29', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 1),
+('40a86f1a-71d3-11e9-ba03-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '1200', '0', '0', 'New Investor', 'Yearly', '2019-05-08 22:52:27', '2019-05-08 22:52:27', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-08 22:52:27', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 1),
 ('9ce8593f-701c-11e9-9519-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b45280e', '5000', '0', '0', 'Test Investment', 'Month-To-Month', '2019-05-06 18:33:00', '2019-05-06 18:33:00', '1', '2019-05-06 18:33:00', '1', 1),
+('ce7eecb8-71d0-11e9-ba03-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '5000', '0', '0', 'Test from POSTMAN', 'Month-to-month', '2019-05-08 22:34:56', '2019-05-08 22:34:56', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-08 22:34:56', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 1),
+('cfb1bc3f-7293-11e9-8d37-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '8000', '0', '0', 'BUY HOUSE', 'Yearly', '2019-05-09 21:51:18', '2019-05-09 21:51:18', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-09 21:51:18', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 1),
 ('d2507a51-701c-11e9-9519-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b45280e', '5000', '0', '0', 'Test Investment 2', 'Yearly', '2019-05-06 18:34:30', '2019-05-06 18:34:30', '1', '2019-05-06 18:34:30', '1', 1),
-('d2507a51-701c-11e9-9519-f48e58e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b45280e', '600', '0', '0', 'Test Investment 2', 'Yearly', '2019-05-06 18:34:30', '2019-05-06 18:34:30', '1', '2019-05-06 18:34:30', '1', 1);
+('d2507a51-701c-11e9-9519-f48e58e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b45280e', '600', '0', '0', 'Test Investment 2', 'Yearly', '2019-05-06 18:34:30', '2019-05-06 18:34:30', '1', '2019-05-06 18:34:30', '1', 1),
+('f3c5ac5c-7293-11e9-8d37-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '5000', '0', '0', 'NEW SOCCER KIT', 'Yearly', '2019-05-09 21:52:18', '2019-05-09 21:52:18', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-09 21:52:18', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 1);
 
 -- --------------------------------------------------------
 
@@ -318,7 +323,7 @@ INSERT INTO `users` (`UserId`, `Email`, `CellphoneNumber`, `Password`, `CreateDa
 ('19c58f7b-6f68-11e9-bde7-f48e38e878a3', 'magwaza@mail.com', '0748508258', 'pass@123!', '2019-05-05 21:00:51', 'SYSTEM_WEB', '2019-05-05 21:00:51', 'SYSTEM_WEB', 1),
 ('2083b0d9-7197-11e9-9e99-80fa5b45280e', 'rewr@dsadsa', '321321', 'pass@123!', '2019-05-08 15:42:31', 'SYSTEM_WEB', '2019-05-08 15:42:31', 'SYSTEM_WEB', 1),
 ('46ae4982-7198-11e9-9e99-80fa5b45280e', 'ddadasd@dsdsad', '3213', 'pass@123!', '2019-05-08 15:50:44', 'SYSTEM_WEB', '2019-05-08 15:50:44', 'SYSTEM_WEB', 1),
-('5989f18f-6f66-11e9-bde7-f48e38e878a3', 'magwaza@mail.com', '0748508258', 'pass@123!', '2019-05-05 20:48:19', 'SYSTEM_WEB', '2019-05-05 20:48:19', 'SYSTEM_WEB', 1),
+('5989f18f-6f66-11e9-bde7-f48e38e878a3', 'freedom@mail.com', '0748508258', 'pass@123!', '2019-05-05 20:48:19', 'SYSTEM_WEB', '2019-05-05 20:48:19', 'SYSTEM_WEB', 1),
 ('60622a96-6f65-11e9-bde7-f48e38e878a3', 'magwaza@mail.com', '0748508258', 'pass@123!', '2019-05-05 20:41:21', 'SYSTEM_WEB', '2019-05-05 20:41:21', 'SYSTEM_WEB', 1),
 ('89cb1440-7197-11e9-9e99-80fa5b45280e', 'sad@dsdsd3', '213', 'pass@123!', '2019-05-08 15:45:27', 'SYSTEM_WEB', '2019-05-08 15:45:27', 'SYSTEM_WEB', 1),
 ('8d81d1a0-61af-11e9-ac92-80fa5b45280e', 'jkk@tr', 'vc', 'pass@123!', '2019-04-18 09:57:03', 'SYSTEM_WEB', '2019-04-18 09:57:03', 'SYSTEM_WEB', 1),
