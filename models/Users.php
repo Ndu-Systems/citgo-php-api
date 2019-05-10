@@ -23,15 +23,17 @@ class Users
     {
 
         $query = "SELECT 
-        UserId, 
-        Email ,
-        Username
+        u.UserId, 
+        u.Email ,
+        c.FirstName
         FROM 
-        users 
+        users u
+        inner join
+        clients c on u.UserId = c.UserId
         WHERE 
-        Email =   ?
+        u.Email =   ?
         AND 
-        Password = ?
+        u.Password = ?
         ";
 
         //Prepare statement
