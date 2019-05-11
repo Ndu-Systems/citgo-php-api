@@ -75,6 +75,19 @@ class Clients
 
         return $stmt->rowCount();
     }
+    public function getClientById($ClientId)
+    {
+
+        $query = "SELECT * FROM clients WHERE ClientId = ?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($ClientId));
+        $cleint  = null;
+        if($stmt->rowCount()){
+            $cleint = $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        return $cleint;
+    }
  
     //Add user 
     public function add(
