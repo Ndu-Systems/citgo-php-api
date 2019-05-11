@@ -57,7 +57,7 @@ class Investments {
                         $Type, 
                         $ClientId,  
                         $ClientId,  
-                        1
+                        2
         
                     ))){
                         return 1;
