@@ -44,6 +44,19 @@ class Users
 
         return $stmt;
     }
+
+   public function getUserEmails(){
+
+    $query = "SELECT * FROM users WHERE 1";
+
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute(array());
+
+    if ($stmt->rowCount()) {
+        $emails = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return  $emails;
+    }
+    }
     //Add user 
     public function add(
         $Email,
