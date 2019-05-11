@@ -19,7 +19,7 @@ $investment = new Investments($db);
 $result = $investment->insert($Amount,$ClientId,$Name,$Type);
 
 if($result > 0){
-    $output = $investment->readByClientId($ClientId,1);
+    $output = $investment->readByClientId($ClientId);
     $outPut = array();
     
     if($output->rowCount()){

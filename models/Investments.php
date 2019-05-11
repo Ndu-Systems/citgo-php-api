@@ -67,7 +67,7 @@ class Investments {
             }
         }
 
-        public function readByClientId($ClientId, $StatusId)
+        public function readByClientId($ClientId)
         {
             $query = "
             SELECT 
@@ -91,13 +91,13 @@ class Investments {
             END AS Status
             FROM
             investment
-            where ClientId = ? AND StatusId = ?";
+            where ClientId = ? AND StatusId in (1,2)";
 
             // prepare query statement
             $stmt = $this->conn->prepare($query);
 
             // Execute query
-            $stmt->execute(array($ClientId, $StatusId));
+            $stmt->execute(array($ClientId));
             
             return $stmt;
         }

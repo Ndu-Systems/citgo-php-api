@@ -11,7 +11,7 @@ $db = $database->connect();
 // instantiate investment object
 $investments = new Investments($db);
 
-$result = $investments->readByClientId($ClientId,1);
+$result = $investments->readByClientId($ClientId);
 $outPut = array();
 
 if($result->rowCount()){
