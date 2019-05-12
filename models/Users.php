@@ -97,6 +97,8 @@ class Users
             return $e;
         }
     }
+
+
     public function getByEmail($email)
     {
         $query = "SELECT * FROM users WHERE Email = ?";
@@ -155,6 +157,25 @@ class Users
         if ($stmt->rowCount()) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             return  $user;
+        }
+    }
+
+    public function  VerifyUser(
+        $UserId,
+        $StatusId
+    ) {
+         $query = "UPDATE users SET StatusId=? WHERE UserId = ?";
+        try {
+            $stmt = $this->conn->prepare($query);
+            if ($stmt->execute(array(
+                $StatusId,
+                $UserId
+
+            ))) {
+                return $this->getUserToVerify($UserId);
+            }
+        } catch (Exception $e) {
+            return $e;
         }
     }
 }
