@@ -156,14 +156,14 @@ class Clients
     public function getClientByUserId($UserId)
     {
 
-        $query = "SELECT ClientId FROM clients WHERE UserId = ?";
+        $query = "SELECT * FROM clients WHERE UserId = ?";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($UserId));
 
         if ($stmt->rowCount()) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            return  $user['ClientId'];
+            return  $user;
         }
     }
 }

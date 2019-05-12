@@ -21,7 +21,6 @@ class Users
     //Get a user
     public function read($email, $password)
     {
-
         $query = "SELECT 
         u.UserId, 
         u.Email ,
@@ -45,19 +44,19 @@ class Users
         return $stmt;
     }
 
-   public function getUserEmails(){
+    public function getUserEmails()
+    {
+        $query = "SELECT * FROM users WHERE 1";
 
-    $query = "SELECT * FROM users WHERE 1";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array());
 
-    $stmt = $this->conn->prepare($query);
-    $stmt->execute(array());
-
-    if ($stmt->rowCount()) {
-        $emails = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return  $emails;
+        if ($stmt->rowCount()) {
+            $emails = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return  $emails;
+        }
     }
-    }
-    //Add user 
+    //Add user
     public function add(
         $Email,
         $CellphoneNumber,
@@ -100,7 +99,6 @@ class Users
     }
     public function getByEmail($email)
     {
-
         $query = "SELECT * FROM users WHERE Email = ?";
 
         $stmt = $this->conn->prepare($query);
@@ -110,7 +108,6 @@ class Users
     }
     public function getUserByEmail($email)
     {
-
         $query = "SELECT UserId FROM users WHERE Email = ?";
 
         $stmt = $this->conn->prepare($query);
@@ -124,7 +121,6 @@ class Users
     //Get a user
     public function getUserByEmailandPassword($email, $password)
     {
-
         $query = "SELECT         
         u.UserId,  
         r.RoleId as Role,
@@ -148,4 +144,18 @@ class Users
 
         return $stmt;
     }
+    public function getUserToVerify($UserId)
+    {
+        // echo $UserId;
+        $query = "SELECT * from users where UserId  = ?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($UserId));
+
+        if ($stmt->rowCount()) {
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            return  $user;
+        }
+    }
 }
+
