@@ -8,9 +8,6 @@ include_once '../../models/Userroles.php';
 $data = json_decode(file_get_contents("php://input"));
 
 $UserId = $data->UserId;
-$Email = $data->Email;
-$CellphoneNumber = $data->CellphoneNumber;
-$Password = $data->Password;
 $ModifyUserId = $data->ModifyUserId;
 $StatusId = $data->StatusId;
 

@@ -133,9 +133,9 @@ class Users
         LEFT JOIN roles r on ur.RoleId = r.RoleId
         LEFT JOIN clients c on u.UserId = c.UserId
         WHERE 
-        Email =  ?
+        u.Email =  ?
         AND 
-        Password = ?
+        u.Password = ?
         ";
 
         //Prepare statement

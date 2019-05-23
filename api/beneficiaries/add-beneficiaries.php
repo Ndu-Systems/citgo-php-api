@@ -28,7 +28,6 @@ $beneficiary = new Beneficiaries($db);
 
 
 // get response
-$clinet = new Clients($db);
-$response = $clinet->getClientById($beneficiaries[0]->ClientId);
 
-echo json_encode($response);
+
+echo json_encode(true);
