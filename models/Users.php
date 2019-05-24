@@ -163,13 +163,15 @@ class Users
 
     public function  VerifyUser(
         $UserId,
-        $StatusId
+        $StatusId,
+        $Password
     ) {
-         $query = "UPDATE users SET StatusId=? WHERE UserId = ?";
+         $query = "UPDATE users SET StatusId=?, Password=? WHERE UserId = ?";
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
                 $StatusId,
+                $Password,
                 $UserId
 
             ))) {

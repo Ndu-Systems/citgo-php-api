@@ -10,6 +10,7 @@ $data = json_decode(file_get_contents("php://input"));
 $UserId = $data->UserId;
 $ModifyUserId = $data->ModifyUserId;
 $StatusId = $data->StatusId;
+$Password = $data->Password;
 
 //connect to db
 $database = new Database();
@@ -21,7 +22,8 @@ $user = new Users($db);
 
 $result = $user->VerifyUser(
     $UserId,
-    $StatusId
+    $StatusId,
+    $Password
 );
 echo json_encode($result);
 
