@@ -110,14 +110,15 @@ class Users
     }
     public function getUserByEmail($email)
     {
-        $query = "SELECT UserId FROM users WHERE Email = ?";
+        $query = "SELECT * FROM users WHERE Email = ?";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($email));
 
         if ($stmt->rowCount()) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            return  $user['UserId'];
+            $user['Password'] = null;
+            return  $user;
         }
     }
     //Get a user
@@ -178,5 +179,7 @@ class Users
             return $e;
         }
     }
+
+   
 }
 
