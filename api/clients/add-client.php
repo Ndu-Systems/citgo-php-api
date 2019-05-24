@@ -54,7 +54,7 @@ $Country = $data->Country;
 
 $client = new Clients($db);
 
-$insertClientId = $client->add(
+$insertClient = $client->add(
     $FirstName,
     $MiddleName,
     $Surname,
@@ -72,4 +72,4 @@ $insertClientId = $client->add(
     $Country
 );
 
-echo json_encode($insertClientId);
+echo json_encode($insertClient);
