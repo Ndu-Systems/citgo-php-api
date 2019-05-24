@@ -67,7 +67,7 @@ class Users
 
     ) {
         if ($this->getByEmail($Email) > 0) {
-            return "User with email address (" . $Email . ") already exists";
+            return null;
         }
 
         $query = "INSERT INTO users(

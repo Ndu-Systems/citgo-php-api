@@ -156,7 +156,7 @@ class Clients
     public function getClientByUserId($UserId)
     {
 
-        $query = "SELECT * FROM clients WHERE UserId = ?";
+        $query = "select * from clients inner join users on  clients.UserId=users.UserId WHERE clients.UserId = ?";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($UserId));

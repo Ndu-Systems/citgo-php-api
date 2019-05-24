@@ -38,6 +38,11 @@ $result = $user->add(
     $StatusId
 );
 
+if($result==null){
+    //User with the email address already exists
+    echo json_encode(0);
+    return 0;
+}
 
 //create client data
 $UserId = $result;
