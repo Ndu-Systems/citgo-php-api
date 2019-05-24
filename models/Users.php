@@ -118,7 +118,7 @@ class Users
         if ($stmt->rowCount()) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             $user['Password'] = null;
-            return  $user;
+            return  $user['UserId'];
         }
     }
     //Get a user

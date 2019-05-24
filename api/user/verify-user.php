@@ -1,7 +1,6 @@
 <?php
 include_once '../../config/Database.php';
 include_once '../../models/Users.php';
-include_once '../../models/Transactionhistory.php';
 include_once '../../models/Userroles.php';
 
 
@@ -28,13 +27,7 @@ $result = $user->VerifyUser(
 echo json_encode($result);
 
 // create role
-$log = new Transactionhistory($db);
 $userroles = new Userroles($db);
-if(isset($result['UserId'])){
-    $userrolescreate = $userroles->add($result['UserId'],2,$ModifyUserId,$ModifyUserId,1);
-    $log_result  = $log->add('VERIFY_USER',  json_encode($data),'', $result['UserId'], $ModifyUserId, $ModifyUserId, 1);
-}else{
-    $log_result  = $log->add('VERIFY_USER',  json_encode($data),'', $result, $ModifyUserId, $ModifyUserId, 1);
-}
+$userrolescreate = $userroles->add($UserId,2,$ModifyUserId,$ModifyUserId,1);
 
 

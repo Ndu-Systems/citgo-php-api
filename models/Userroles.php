@@ -20,6 +20,9 @@ class Userroles
         $ModifyUserId,
         $StatusId
     ) {
+        if ($this->getRoleByUserId($UserId) > 0) {
+            return null;
+        }
         $query = "INSERT INTO userroles (
                                         UserId,
                                         RoleId,
@@ -43,5 +46,15 @@ class Userroles
         } catch (Exception $e) {
             return $e;
         }
+    }
+
+    public function getRoleByUserId($UserId)
+    {
+        $query = "SELECT * FROM userroles WHERE UserId = ?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($UserId));
+
+        return $stmt->rowCount();
     }
 }
