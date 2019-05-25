@@ -88,6 +88,20 @@ class Clients
         }
         return $cleint;
     }
+    public function getClientRefferals($ClientId)
+    {
+
+        $query = "SELECT * FROM clients  WHERE ParentId  = ?";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        // Execute query
+        $stmt->execute(array($ClientId));
+        
+        return $stmt;
+
+    }
  
     //Add user 
     public function add(
