@@ -14,12 +14,12 @@ $db = $database->connect();
 $client = new Clients($db);
 
 $result = $client->getClientRefferals($ClientId);
-
+$refferals=array();
 if($result->rowCount()){
     $refferals = $result->fetchAll(PDO::FETCH_ASSOC);
 }
 $outPut = array();
-$outPut['refferals'] = $refferals;
+$outPut = $refferals;
 echo json_encode($outPut);
 
 

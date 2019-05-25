@@ -91,7 +91,7 @@ class Clients
     public function getClientRefferals($ClientId)
     {
 
-        $query = "SELECT * FROM clients  WHERE ParentId  = ?";
+        $query = "SELECT * FROM clients c inner join users u on  c.UserId=u.UserId WHERE ParentId  = ?";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
