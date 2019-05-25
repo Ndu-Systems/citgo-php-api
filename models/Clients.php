@@ -183,4 +183,59 @@ class Clients
             return  $user;
         }
     }
+
+    public function updateClient(
+        $FirstName,
+        $MiddleName,
+        $Surname,
+        $IDNumber,
+        $UserId,
+        $Gender,
+        $Province,     
+        $City,
+        $PostCode,
+        $Address,
+        $StatusId,        
+        $ModifyUserId,       
+        $Country
+    )
+    {
+        $query = "UPDATE clients set              
+            FirstName=?,
+            MiddleName=?,
+            Surname=?,
+            IDNumber=?,            
+            Gender=?,
+            Province=?,
+            City=?,
+            Country=?,
+            PostCode=?,
+            Address=?,
+            StatusId=?,        
+            ModifyUserId=?
+            WHERE UserId =?
+         ";            
+            try {
+                $stmt = $this->conn->prepare($query);          
+                if ($stmt->execute(array(
+                    $FirstName,
+                    $MiddleName,
+                    $Surname,
+                    $IDNumber,                  
+                    $Gender,
+                    $Province,
+                    $City,
+                    $Country,
+                    $PostCode,
+                    $Address,
+                    $StatusId,                 
+                    $ModifyUserId,
+                    $UserId
+                ))) {
+                    return $UserId;
+                }
+            } catch (Exception $e) {
+                return $e;
+            }
+    }
 }
