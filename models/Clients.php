@@ -98,6 +98,7 @@ class Clients
         $UserId,
         $Gender,
         $Province,
+        $ParentId,
         $City,
         $PostCode,
         $Address,
@@ -117,6 +118,7 @@ class Clients
                 UserId,
                 Gender,
                 Province,
+                ParentId,
                 City,
                 Country,
                 PostCode,
@@ -125,7 +127,7 @@ class Clients
                 CreateUserId,
                 ModifyUserId
             ) 
-                VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+                VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
                  ";
         try {
             $stmt = $this->conn->prepare($query);
@@ -137,6 +139,7 @@ class Clients
                 $UserId,
                 $Gender,
                 $Province,
+                $ParentId,
                 $City,
                 $Country,
                 $PostCode,

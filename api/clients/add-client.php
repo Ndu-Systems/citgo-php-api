@@ -52,6 +52,7 @@ $Surname = $data->Surname;
 $IDNumber = $data->IDNumber;
 $Gender = $data->Gender;
 $Province = $data->Province;
+$ParentId = $data->ParentId;
 $City = $data->City;
 $PostCode = $data->PostCode;
 $Address = $data->Address;
@@ -67,6 +68,7 @@ $insertClient = $client->add(
     $UserId,
     $Gender,
     $Province,
+    $ParentId,
     $City,
     $PostCode,
     $Address,
