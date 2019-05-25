@@ -31,8 +31,8 @@ class Documents
 
     //Add  
     public function add(
-        $DocumentId, 
         $ClientId, 
+        $InvestmentId, 
         $DocumentCode, 
         $DocumentName, 
         $DocumentUrl, 
@@ -43,6 +43,7 @@ class Documents
         $query = "INSERT INTO documents (
                                         DocumentId, 
                                         ClientId, 
+                                        InvestmentId,
                                         DocumentCode, 
                                         DocumentName, 
                                         DocumentUrl, 
@@ -50,13 +51,13 @@ class Documents
                                         ModifyUserId, 
                                         StatusId
                                         )
-                    VALUES (UUID(),?, ?, ?, ?, ?, ?, ?)           
+                    VALUES (UUID(),?, ?, ?, ?, ?,?, ?, ?)           
                    ";
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $DocumentId, 
                 $ClientId, 
+                $InvestmentId, 
                 $DocumentCode, 
                 $DocumentName, 
                 $DocumentUrl, 
