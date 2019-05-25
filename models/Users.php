@@ -182,6 +182,34 @@ class Users
         }
     }
 
+    public function updateUser(
+        $Email,
+        $CellphoneNumber,
+        $Password,
+        $ModifyUserId,
+        $StatusId,
+        $UserId
+    )
+    {
+        $query = "UPDATE users SET Email=?,CellphoneNumber=?, Password=?, ModifyUserId=?, StatusId=? WHERE UserId = ?";
+       
+        try {
+            $stmt = $this->conn->prepare($query);          
+            if ($stmt->execute(array(
+              $Email,
+              $CellphoneNumber,
+              $Password,
+              $ModifyUserId,
+              $StatusId,
+              $UserId
+            ))) {
+                return $UserId;
+            }
+        } catch (Exception $e) {
+            return $e;
+        }
+    }
+
    
 }
 
