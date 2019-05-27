@@ -4,17 +4,6 @@ class Investments {
       // DB Stuff
       private $conn;
 
-        // properties
-        public $InvestmentId; 
-        public $Amount; 
-        public $Profit; 
-        public $Total; 
-        public $Name; 
-        public $Type; 
-        public $InvestmentDate; 
-        public $CreateUserId; 
-        public $ModifyUserId; 
-
         // Consutructor
         public function __construct($db) {
             $this->conn = $db;
@@ -101,4 +90,66 @@ class Investments {
             
             return $stmt;
         }
+
+        public function updateInvestment(
+            $ClientId,
+            $Amount,
+            $Profit,
+            $Total,
+            $Name,
+            $Type,
+            $ModifyUserId,
+            $StatusId,
+            $InvestmentId
+        )
+        {
+            $query = "
+            UPDATE investment SET  
+                ClientId=?, 
+                Amount=?, 
+                Profit=?, 
+                Total=?, 
+                Name=?, 
+                Type=?, 
+                ModifyDate=now(), 
+                ModifyUserId=?, 
+                StatusId=? 
+                WHERE 
+                InvestmentId =?
+
+            ";
+           
+            try {
+                $stmt = $this->conn->prepare($query);          
+                if ($stmt->execute(array(
+                    $ClientId,
+                    $Amount,
+                    $Profit,
+                    $Total,
+                    $Name,
+                    $Type,
+                    $ModifyUserId,
+                    $StatusId,
+                    $InvestmentId
+                ))) {
+                    return $this->getInvestmentById($InvestmentId);
+                }
+            } catch (Exception $e) {
+                return $e;
+            }
+        }
+    
+        
+    public function getInvestmentById($InvestmentId)
+    {
+        $query = "SELECT * FROM investment WHERE InvestmentId =?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($InvestmentId));
+
+        if ($stmt->rowCount()) {
+            $emails = $stmt->fetch(PDO::FETCH_ASSOC);
+            return  $emails;
+        }
+    }
 }

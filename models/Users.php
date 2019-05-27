@@ -166,7 +166,7 @@ class Users
         $StatusId,
         $Password
     ) {
-         $query = "UPDATE users SET StatusId=?, Password=? WHERE UserId = ?";
+        $query = "UPDATE users SET StatusId=?, Password=? WHERE UserId = ?";
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
@@ -189,19 +189,18 @@ class Users
         $ModifyUserId,
         $StatusId,
         $UserId
-    )
-    {
+    ) {
         $query = "UPDATE users SET Email=?,CellphoneNumber=?, Password=?, ModifyUserId=?, StatusId=? WHERE UserId = ?";
-       
+
         try {
-            $stmt = $this->conn->prepare($query);          
+            $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-              $Email,
-              $CellphoneNumber,
-              $Password,
-              $ModifyUserId,
-              $StatusId,
-              $UserId
+                $Email,
+                $CellphoneNumber,
+                $Password,
+                $ModifyUserId,
+                $StatusId,
+                $UserId
             ))) {
                 return $UserId;
             }
@@ -209,7 +208,4 @@ class Users
             return $e;
         }
     }
-
-   
 }
-

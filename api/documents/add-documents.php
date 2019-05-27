@@ -31,4 +31,7 @@ $result = $documents->add(
     $StatusId
 );
 
+// if event id -- update status
+
+
 echo json_encode($result);
