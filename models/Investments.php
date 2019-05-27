@@ -165,7 +165,14 @@ class Investments
             WHEN  i.StatusId = 3 THEN 'AWAITING-CONFIRMATION'
             ELSE 'INACTIVE'
             END AS Status,
-            i.CreateDate as InvestmentDate
+            i.CreateDate as InvestmentDate,
+            d.CreateDate as UploadedDate,
+            CASE
+            WHEN d.StatusId = 1 THEN 'ACTIVE'
+            WHEN  d.StatusId = 2 THEN 'PENDING'
+            WHEN  d.StatusId = 3 THEN 'AWAITING-CONFIRMATION'
+            ELSE 'INACTIVE'
+            END AS DocStatus
          FROM investment i left join documents d 
                    on i.InvestmentId = d.InvestmentId 
                   WHERE i.InvestmentId =?";
