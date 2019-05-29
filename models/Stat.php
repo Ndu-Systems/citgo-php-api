@@ -32,7 +32,7 @@ class Stat
         //Execute query
         $stmt->execute(array(3,1,1));
         if ($stmt->rowCount()) {
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         }else{
             $r=Array();
             return $r;
