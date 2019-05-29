@@ -187,7 +187,7 @@ class Investments
     }
     public function getInvestmentByStatus($StatusId)
     {
-        $query = "select * from investment where StatusId =?";
+        $query = "select * from investment i left join documents d on i.InvestmentId = d.InvestmentId where i.StatusId =?";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($StatusId));
