@@ -238,4 +238,25 @@ class Clients
                 return $e;
             }
     }
+    // Get clients with thier investments
+    public function getClientAndShares()
+    {
+
+        $query = "
+        SELECT 
+            c.ClientId, c.FirstName, c.Surname, c.StatusId , sum(i.Amount) as Shares
+            FROM
+        clients c
+        LEFT JOIN
+         investment i ON c.ClientId = i.ClientId
+            group by i.ClientId
+        ";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array());
+
+        if ($stmt->rowCount()) {
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
 }

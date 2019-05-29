@@ -185,4 +185,15 @@ class Investments
             return  $emails;
         }
     }
+    public function getInvestmentByStatus($StatusId)
+    {
+        $query = "select * from investment where StatusId =?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($StatusId));
+
+        if ($stmt->rowCount()) {
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
 }
