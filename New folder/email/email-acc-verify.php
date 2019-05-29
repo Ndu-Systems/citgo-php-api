@@ -12,7 +12,7 @@ $link= $data->link;
  <div
  style='position:relative;width:80%;font-family:Trebuchet MS;background-color:#ecf0f1;box-sizing: border-box;margin: auto; padding: 3%;'>
  <h2 style='text-align: center;width:100%;'>
-   Welcome Citgo Africa - Stater Pack
+   Welcome Citgo Africa
  </h2>
  <div style='width:100%;padding:3%;padding-bottom: 1%;'>
    <p style='text-align:left;width:80%;'>
@@ -47,7 +47,7 @@ $link= $data->link;
 
 $to = "mrnnmthembu@gmail.com ,Freedom.Khanyile1@gmail.com, ".$email;
 $subject = 'Citgo  new account Confirmation';
-$from = 'shares@citgoafrica.com';
+$from = 'ndumiso@ndu-systems.net';
  
 $headers  = 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";

@@ -47,7 +47,7 @@ $link= $data->link;
 
 $to = "mrnnmthembu@gmail.com ,Freedom.Khanyile1@gmail.com, ".$email;
 $subject = 'Citgo  new account Confirmation';
-$from = 'shares@citgoafrica.com';
+$from = 'ndumiso@ndu-systems.net';
  
 $headers  = 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
