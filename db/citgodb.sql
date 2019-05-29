@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2019 at 01:51 PM
+-- Generation Time: May 29, 2019 at 06:41 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -138,7 +138,9 @@ INSERT INTO `clients` (`ClientId`, `UserId`, `FirstName`, `MiddleName`, `Surname
 ('8855e70e-7ee9-11e9-a700-80fa5b45280e', '8853cc2c-7ee9-11e9-a700-80fa5b45280e', 'John', NULL, 'Doe', 'hgfh', 'Not needed', '4545', 'Male', 'South Africa', 'Johanesburg', '0000', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-25 14:35:10', 'SYSTEM_WEB', '2019-05-25 14:35:10', 'SYSTEM_WEB', 4),
 ('8d82242c-61af-11e9-ac92-80fa5b45280e', '8d81d1a0-61af-11e9-ac92-80fa5b45280e', 'lkjll', 'jkll', 'jkl', 'hgfh', 'hgfh', '78658', 'Female', 'South Africa', 'g', '566', NULL, '2019-04-18 09:57:03', 'SYSTEM_WEB', '2019-04-18 09:57:03', 'SYSTEM_WEB', 1),
 ('a39d846a-61b3-11e9-ac92-80fa5b452iie', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 'John', 'Test', 'Doe', 'Gauteng', 'Test address stret 123', '925042254335466648', 'Male', 'South Africa', 'fdfd', '434', NULL, '2019-04-18 10:26:19', 'SYSTEM_WEB', '2019-04-18 10:26:19', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1),
+('a553a68e-80ba-11e9-b9bb-80fa5b45280e', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', 'John', NULL, 'Doe', 'hgfh', 'Not needed', '65656', 'Female', 'South Africa', 'Johanesburg', '0000', '', '2019-05-27 22:04:34', 'SYSTEM_WEB', '2019-05-27 22:04:34', 'SYSTEM_WEB', 4),
 ('af22bccf-7f16-11e9-a700-80fa5b45280e', 'af224651-7f16-11e9-a700-80fa5b45280e', 'John', NULL, 'Doe', 'hgfh', 'Not needed', '213132', 'Male', 'South Africa', 'Johanesburg', '0000', '', '2019-05-25 19:58:22', 'SYSTEM_WEB', '2019-05-25 19:58:22', 'SYSTEM_WEB', 4),
+('c3bd3de6-8212-11e9-899f-80fa5b45280e', 'c3bc5bc7-8212-11e9-899f-80fa5b45280e', 'Thando', 'Thando', 'Dee', 'kzn', 'Not needed', '5454545', 'Male', 'South Africa', 'dbn', '0000', '', '2019-05-29 15:07:51', 'SYSTEM_WEB', '2019-05-29 15:07:51', 'SYSTEM_WEB', 4),
 ('c40d6651-7ee7-11e9-a700-80fa5b45280e', 'c40d0e11-7ee7-11e9-a700-80fa5b45280e', 'John', NULL, 'Ref', 'hgfh', 'Not needed', '213213', 'Female', 'South Africa', 'Johanesburg', '0000', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-25 14:22:31', 'SYSTEM_WEB', '2019-05-25 14:22:31', 'SYSTEM_WEB', 4);
 
 -- --------------------------------------------------------
@@ -183,18 +185,30 @@ CREATE TABLE `documents` (
 --
 
 INSERT INTO `documents` (`DocumentId`, `DocumentCode`, `ClientId`, `InvestmentId`, `DocumentName`, `DocumentUrl`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('07b4d4e7-80c7-11e9-b9bb-80fa5b45280e', 'POP', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', 'a1d60ae4-80c6-11e9-b9bb-80fa5b45280e', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558992793cigo2.PNG', '2019-05-27 23:33:13', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', '2019-05-27 23:33:13', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', 1),
 ('142c9a37-804a-11e9-b26a-80fa5b45280e', 'POP', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 'f4b41d7f-8048-11e9-b26a-80fa5b45280e', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558939125smartmockups_jvw1k73g.jpg', '2019-05-27 08:38:45', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', '2019-05-27 08:38:45', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1),
 ('17466d21-7f3d-11e9-a359-80fa5b45280e', 'a39d846a-6', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-26 00:33:17', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-26 00:33:17', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 0),
 ('1a24fdfe-804a-11e9-b26a-80fa5b45280e', 'POP', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 'f4b41d7f-8048-11e9-b26a-80fa5b45280e', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558939135smartmockups_jvw1k73g.jpg', '2019-05-27 08:38:55', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', '2019-05-27 08:38:55', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1),
 ('2850c711-8047-11e9-b26a-80fa5b45280e', 'POP', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '1e5d8a52-71d3-11e9-ba03-f48e38e878a3', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558937871cigo.PNG', '2019-05-27 08:17:51', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', '2019-05-27 08:17:51', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1),
 ('3b757566-8048-11e9-b26a-80fa5b45280e', 'POP', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '1e5d8a52-71d3-11e9-ba03-f48e38e878a3', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558938332random2.PNG', '2019-05-27 08:25:32', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', '2019-05-27 08:25:32', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1),
+('40109811-80c2-11e9-b9bb-80fa5b45280e', 'POP', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '7eb2be5a-80bb-11e9-b9bb-80fa5b45280e', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558990740financial-icons-set_1284-13514.jpg', '2019-05-27 22:59:00', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', '2019-05-27 22:59:00', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', 1),
 ('54847806-7f3d-11e9-a359-80fa5b45280e', 'POP', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '1e5d8a52-71d3-11e9-ba03-f48e38e878a3', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/15588236994.jpg', '2019-05-26 00:34:59', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', '2019-05-26 00:34:59', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1),
+('7d23c8b0-80c3-11e9-b9bb-80fa5b45280e', 'POP', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '734ef7a0-80c2-11e9-b9bb-80fa5b45280e', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558991272smartmockups_jvw1k73g.jpg', '2019-05-27 23:07:52', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', '2019-05-27 23:07:52', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', 1),
+('8c0e45d2-80c4-11e9-b9bb-80fa5b45280e', 'POP', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '7565e778-80c4-11e9-b9bb-80fa5b45280e', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558991726smartmockups_jvw1k73g - Copy.jpg', '2019-05-27 23:15:26', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', '2019-05-27 23:15:26', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', 1),
 ('8efe1e7e-8047-11e9-b26a-80fa5b45280e', 'POP', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '1e5d8a52-71d3-11e9-ba03-f48e38e878a3', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558938043cigo2.PNG', '2019-05-27 08:20:43', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', '2019-05-27 08:20:43', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1),
 ('92c5a985-8047-11e9-b26a-80fa5b45280e', 'POP', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '1e5d8a52-71d3-11e9-ba03-f48e38e878a3', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558938049cigo2.PNG', '2019-05-27 08:20:49', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', '2019-05-27 08:20:49', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1),
+('a557f37e-80a0-11e9-b26a-80fa5b45280e', 'POP', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '31cfc7a5-809f-11e9-b26a-80fa5b45280e', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558976306img16.jpg', '2019-05-27 18:58:26', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', '2019-05-27 18:58:26', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1),
+('a5ce0e39-812b-11e9-b9bb-80fa5b45280e', 'POP', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '748d1afe-8126-11e9-b9bb-80fa5b45280e', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1559036006Group 2.png', '2019-05-28 11:33:26', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', '2019-05-28 11:33:26', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', 1),
 ('aaf55e7b-804b-11e9-b26a-80fa5b45280e', 'POP', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '10099979-804b-11e9-b26a-80fa5b45280e', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558939808smartmockups_jvw1k73g.jpg', '2019-05-27 08:50:08', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', '2019-05-27 08:50:08', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1),
+('b3936f95-812c-11e9-b9bb-80fa5b45280e', 'POP', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', 'ad327b43-812c-11e9-b9bb-80fa5b45280e', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1559036459cigo.PNG', '2019-05-28 11:40:59', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', '2019-05-28 11:40:59', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', 1),
+('bf45e81b-80c5-11e9-b9bb-80fa5b45280e', 'POP', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', 'b66cf5f3-80c5-11e9-b9bb-80fa5b45280e', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558992242smartmockups_jvw1k73g - Copy.jpg', '2019-05-27 23:24:02', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', '2019-05-27 23:24:02', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', 1),
 ('c14f7d40-8047-11e9-b26a-80fa5b45280e', 'POP', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '1e5d8a52-71d3-11e9-ba03-f48e38e878a3', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558938127cigo.PNG', '2019-05-27 08:22:07', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', '2019-05-27 08:22:07', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1),
+('c25353b3-812c-11e9-b9bb-80fa5b45280e', 'POP', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', 'bdc06ad4-812c-11e9-b9bb-80fa5b45280e', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1559036484random.PNG', '2019-05-28 11:41:24', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', '2019-05-28 11:41:24', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', 1),
 ('c25a2189-8048-11e9-b26a-80fa5b45280e', 'POP', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '40a86f1a-71d3-11e9-ba03-f48e38e878a3', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558938559smartmockups_jvw1k73g.jpg', '2019-05-27 08:29:19', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', '2019-05-27 08:29:19', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1),
-('f6268248-8047-11e9-b26a-80fa5b45280e', 'POP', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '1e5d8a52-71d3-11e9-ba03-f48e38e878a3', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558938216smartmockups_jvw1k73g - Copy.jpg', '2019-05-27 08:23:36', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', '2019-05-27 08:23:36', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1);
+('e2efad31-80a0-11e9-b26a-80fa5b45280e', 'POP', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 'c5e0adb4-80a0-11e9-b26a-80fa5b45280e', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558976409c.png', '2019-05-27 19:00:09', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', '2019-05-27 19:00:09', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1),
+('eb588c8f-812c-11e9-b9bb-80fa5b45280e', 'POP', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', 'e6e345db-812c-11e9-b9bb-80fa5b45280e', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1559036552cigo.PNG', '2019-05-28 11:42:32', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', '2019-05-28 11:42:32', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', 1),
+('f6268248-8047-11e9-b26a-80fa5b45280e', 'POP', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '1e5d8a52-71d3-11e9-ba03-f48e38e878a3', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1558938216smartmockups_jvw1k73g - Copy.jpg', '2019-05-27 08:23:36', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', '2019-05-27 08:23:36', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1),
+('f95dac8b-8212-11e9-899f-80fa5b45280e', 'POP', 'c3bd3de6-8212-11e9-899f-80fa5b45280e', 'f17f1154-8212-11e9-899f-80fa5b45280e', 'Proof of payment', 'http://localhost:8080/citgo-php-api/api/upload/uploads/1559135361smartmockups_jvw1k73g - Copy.jpg', '2019-05-29 15:09:21', 'c3bc5bc7-8212-11e9-899f-80fa5b45280e', '2019-05-29 15:09:21', 'c3bc5bc7-8212-11e9-899f-80fa5b45280e', 1);
 
 -- --------------------------------------------------------
 
@@ -225,25 +239,38 @@ CREATE TABLE `investment` (
 INSERT INTO `investment` (`InvestmentId`, `ClientId`, `Amount`, `Profit`, `Total`, `Name`, `Type`, `InvestmentDate`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
 ('10099979-804b-11e9-b26a-80fa5b45280e', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '32', '0', '0', 'Share 6', 'Month-to-month', '2019-05-27 08:45:48', '2019-05-27 08:45:48', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-27 08:50:08', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 3),
 ('12213b75-7f1c-11e9-a700-80fa5b45280e', 'af22bccf-7f16-11e9-a700-80fa5b45280e', '6700', '0', '0', 'Share 1', 'Month-to-month', '2019-05-25 20:36:56', '2019-05-25 20:36:56', 'af22bccf-7f16-11e9-a700-80fa5b45280e', '2019-05-25 20:36:56', 'af22bccf-7f16-11e9-a700-80fa5b45280e', 2),
+('1ad7edaa-8208-11e9-899f-80fa5b45280e', '35223af0-7f04-11e9-a700-80fa5b45280e', '21', '0', '0', 'Share 1', 'Yearly', '2019-05-29 13:51:33', '2019-05-29 13:51:33', '35223af0-7f04-11e9-a700-80fa5b45280e', '2019-05-29 13:51:33', '35223af0-7f04-11e9-a700-80fa5b45280e', 2),
 ('1e5d8a52-71d3-11e9-ba03-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '25000', '0', '0', 'New makes', 'Month-to-month', '2019-05-08 22:51:29', '2019-05-08 22:51:29', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-27 08:25:32', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 3),
+('31cfc7a5-809f-11e9-b26a-80fa5b45280e', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '25000', '0', '0', 'Share 10', 'Month-to-month', '2019-05-27 18:48:02', '2019-05-27 18:48:02', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-27 18:58:26', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 3),
 ('40a86f1a-71d3-11e9-ba03-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '1200', '0', '0', 'New Investor', 'Yearly', '2019-05-08 22:52:27', '2019-05-08 22:52:27', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-27 08:29:19', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 3),
 ('5030a897-729f-11e9-86f7-80fa5b45280e', '0255f480-729c-11e9-86f7-80fa5b45280e', '6000', '0', '0', 'test 2', 'Month-to-month', '2019-05-09 23:13:38', '2019-05-09 23:13:38', '0255f480-729c-11e9-86f7-80fa5b45280e', '2019-05-09 23:13:38', '0255f480-729c-11e9-86f7-80fa5b45280e', 1),
 ('51253468-740f-11e9-934a-f48e38e878a3', '493894fc-740e-11e9-934a-f48e38e878a3', '5500', '0', '0', 'BEE Empower', 'Month-to-month', '2019-05-11 19:07:25', '2019-05-11 19:07:25', '493894fc-740e-11e9-934a-f48e38e878a3', '2019-05-11 19:07:25', '493894fc-740e-11e9-934a-f48e38e878a3', 2),
 ('5dd0671c-729e-11e9-86f7-80fa5b45280e', '0255f480-729c-11e9-86f7-80fa5b45280e', '5000', '0', '0', 'Ndu car', 'Month-to-month', '2019-05-09 23:06:51', '2019-05-09 23:06:51', '0255f480-729c-11e9-86f7-80fa5b45280e', '2019-05-09 23:06:51', '0255f480-729c-11e9-86f7-80fa5b45280e', 1),
+('734ef7a0-80c2-11e9-b9bb-80fa5b45280e', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '22', '0', '0', 'Share 1', 'Month-to-month', '2019-05-27 23:00:26', '2019-05-27 23:00:26', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '2019-05-27 23:07:52', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', 3),
+('748d1afe-8126-11e9-b9bb-80fa5b45280e', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '2000', '0', '0', 'Share 6', 'Month-to-month', '2019-05-28 10:56:16', '2019-05-28 10:56:16', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '2019-05-28 11:33:26', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', 3),
+('7565e778-80c4-11e9-b9bb-80fa5b45280e', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '200', '0', '0', 'Share 3', 'Month-to-month', '2019-05-27 23:14:48', '2019-05-27 23:14:48', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '2019-05-27 23:15:26', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', 3),
 ('7dd60329-729f-11e9-86f7-80fa5b45280e', '0255f480-729c-11e9-86f7-80fa5b45280e', '5600', '0', '0', 'test 4', 'Month-to-month', '2019-05-09 23:14:54', '2019-05-09 23:14:54', '0255f480-729c-11e9-86f7-80fa5b45280e', '2019-05-09 23:14:54', '0255f480-729c-11e9-86f7-80fa5b45280e', 1),
+('7eb2be5a-80bb-11e9-b9bb-80fa5b45280e', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '2000', '0', '0', 'Share 1', 'Month-to-month', '2019-05-27 22:10:38', '2019-05-27 22:10:38', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '2019-05-27 22:59:00', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', 3),
 ('8f28a33b-72a1-11e9-86f7-80fa5b45280e', '0255f480-729c-11e9-86f7-80fa5b45280e', '88888', '0', '0', 'test8888', 'Month-to-month', '2019-05-09 23:29:42', '2019-05-09 23:29:42', '0255f480-729c-11e9-86f7-80fa5b45280e', '2019-05-09 23:29:42', '0255f480-729c-11e9-86f7-80fa5b45280e', 1),
 ('9ce8593f-701c-11e9-9519-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b45280e', '5000', '0', '0', 'Test Investment', 'Month-To-Month', '2019-05-06 18:33:00', '2019-05-06 18:33:00', '1', '2019-05-06 18:33:00', '1', 1),
+('a1d60ae4-80c6-11e9-b9bb-80fa5b45280e', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '200', '0', '0', 'Share 5', 'Month-to-month', '2019-05-27 23:30:22', '2019-05-27 23:30:22', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '2019-05-29 12:03:44', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', 1),
 ('a3c27228-73f0-11e9-bd16-80fa5b45280e', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '752222', '0', '0', '752222 - test', 'Month-to-month', '2019-05-11 15:28:14', '2019-05-11 15:28:14', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-11 15:28:14', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 1),
 ('a4a5aba8-7f10-11e9-a700-80fa5b45280e', '61e541de-7f0f-11e9-a700-80fa5b45280e', '5000', '0', '0', 'Share 1', 'Month-to-month', '2019-05-25 19:15:08', '2019-05-25 19:15:08', '61e541de-7f0f-11e9-a700-80fa5b45280e', '2019-05-25 19:15:08', '61e541de-7f0f-11e9-a700-80fa5b45280e', 2),
 ('a5b72409-72a1-11e9-86f7-80fa5b45280e', '0255f480-729c-11e9-86f7-80fa5b45280e', '77777', '0', '0', 'test777', 'Month-to-month', '2019-05-09 23:30:20', '2019-05-09 23:30:20', '0255f480-729c-11e9-86f7-80fa5b45280e', '2019-05-09 23:30:20', '0255f480-729c-11e9-86f7-80fa5b45280e', 1),
+('ad327b43-812c-11e9-b9bb-80fa5b45280e', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '2000', '0', '0', 'Share 7', 'Month-to-month', '2019-05-28 11:40:48', '2019-05-28 11:40:48', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '2019-05-28 11:40:59', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', 3),
+('b66cf5f3-80c5-11e9-b9bb-80fa5b45280e', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '2000', '0', '0', 'Share 4', 'Month-to-month', '2019-05-27 23:23:47', '2019-05-27 23:23:47', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '2019-05-27 23:24:02', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', 3),
 ('b675b281-729e-11e9-86f7-80fa5b45280e', '0255f480-729c-11e9-86f7-80fa5b45280e', '21321', '0', '0', 'test', 'Month-to-month', '2019-05-09 23:09:20', '2019-05-09 23:09:20', '0255f480-729c-11e9-86f7-80fa5b45280e', '2019-05-09 23:09:20', '0255f480-729c-11e9-86f7-80fa5b45280e', 1),
+('bdc06ad4-812c-11e9-b9bb-80fa5b45280e', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '333', '0', '0', 'Share 8', 'Month-to-month', '2019-05-28 11:41:16', '2019-05-28 11:41:16', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '2019-05-28 11:41:24', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', 3),
+('c5e0adb4-80a0-11e9-b26a-80fa5b45280e', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2550', '0', '0', 'Share 11', 'Month-to-month', '2019-05-27 18:59:20', '2019-05-27 18:59:20', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-27 19:00:09', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 3),
 ('c6c73ca2-729b-11e9-86f7-80fa5b45280e', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '5000', '0', '0', 'Ndu bawl one', 'Yearly', '2019-05-09 22:48:19', '2019-05-09 22:48:19', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-09 22:48:19', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 1),
 ('ce7eecb8-71d0-11e9-ba03-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '5000', '0', '0', 'Test from POSTMAN', 'Month-to-month', '2019-05-08 22:34:56', '2019-05-08 22:34:56', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-08 22:34:56', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 1),
 ('cfb1bc3f-7293-11e9-8d37-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '8000', '0', '0', 'BUY HOUSE', 'Yearly', '2019-05-09 21:51:18', '2019-05-09 21:51:18', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-09 21:51:18', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 1),
 ('d2507a51-701c-11e9-9519-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b45280e', '5000', '0', '0', 'Test Investment 2', 'Yearly', '2019-05-06 18:34:30', '2019-05-06 18:34:30', '1', '2019-05-06 18:34:30', '1', 1),
 ('d2507a51-701c-11e9-9519-f48e58e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b45280e', '600', '0', '0', 'Test Investment 2', 'Yearly', '2019-05-06 18:34:30', '2019-05-06 18:34:30', '1', '2019-05-06 18:34:30', '1', 1),
+('e6e345db-812c-11e9-b9bb-80fa5b45280e', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '333', '0', '0', 'Share 9', 'Month-to-month', '2019-05-28 11:42:25', '2019-05-28 11:42:25', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', '2019-05-28 11:42:32', 'a553a68e-80ba-11e9-b9bb-80fa5b45280e', 3),
+('f17f1154-8212-11e9-899f-80fa5b45280e', 'c3bd3de6-8212-11e9-899f-80fa5b45280e', '100', '0', '0', 'Share 1', 'Month-to-month', '2019-05-29 15:09:08', '2019-05-29 15:09:08', 'c3bd3de6-8212-11e9-899f-80fa5b45280e', '2019-05-29 15:10:54', 'c3bc5bc7-8212-11e9-899f-80fa5b45280e', 1),
 ('f3c5ac5c-7293-11e9-8d37-f48e38e878a3', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '5000', '0', '0', 'NEW SOCCER KIT', 'Yearly', '2019-05-09 21:52:18', '2019-05-09 21:52:18', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-09 21:52:18', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 1),
-('f4b41d7f-8048-11e9-b26a-80fa5b45280e', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '3232', '0', '0', 'Share 6', 'Month-to-month', '2019-05-27 08:30:43', '2019-05-27 08:30:43', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-27 08:38:56', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', 3);
+('f4b41d7f-8048-11e9-b26a-80fa5b45280e', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '3232', '0', '0', 'Share 6', 'Month-to-month', '2019-05-27 08:30:43', '2019-05-27 08:30:43', 'a39d846a-61b3-11e9-ac92-80fa5b452iie', '2019-05-29 12:05:28', '19c58f7b-6f68-11e9-bde7-f48e38e878a3', 1);
 
 -- --------------------------------------------------------
 
@@ -346,7 +373,7 @@ CREATE TABLE `userroles` (
   `Id` int(11) NOT NULL,
   `UserId` varchar(225) NOT NULL,
   `RoleId` varchar(225) NOT NULL,
-  `CreateDate` datetime NOT NULL,
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CreateUserId` varchar(225) NOT NULL,
   `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) NOT NULL,
@@ -374,7 +401,10 @@ INSERT INTO `userroles` (`Id`, `UserId`, `RoleId`, `CreateDate`, `CreateUserId`,
 (14, '3521db6c-7f04-11e9-a700-80fa5b45280e', '2', '0000-00-00 00:00:00', '3521db6c-7f04-11e9-a700-80fa5b45280e', '2019-05-25 17:55:27', '3521db6c-7f04-11e9-a700-80fa5b45280e', 1),
 (15, '61e4ec36-7f0f-11e9-a700-80fa5b45280e', '2', '0000-00-00 00:00:00', '61e4ec36-7f0f-11e9-a700-80fa5b45280e', '2019-05-25 19:07:15', '61e4ec36-7f0f-11e9-a700-80fa5b45280e', 1),
 (16, 'af224651-7f16-11e9-a700-80fa5b45280e', '2', '0000-00-00 00:00:00', 'af224651-7f16-11e9-a700-80fa5b45280e', '2019-05-25 20:08:03', 'af224651-7f16-11e9-a700-80fa5b45280e', 1),
-(17, '60622a96-6f65-11e9-bde7-f48e38e878a3', '1', '0000-00-00 00:00:00', 'af224651-7f16-11e9-a700-80fa5b45280e', '2019-05-25 20:08:03', 'af224651-7f16-11e9-a700-80fa5b45280e', 1);
+(17, '60622a96-6f65-11e9-bde7-f48e38e878a3', '1', '0000-00-00 00:00:00', 'af224651-7f16-11e9-a700-80fa5b45280e', '2019-05-25 20:08:03', 'af224651-7f16-11e9-a700-80fa5b45280e', 1),
+(18, 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', '2', '0000-00-00 00:00:00', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', '2019-05-27 22:05:19', 'a55211ed-80ba-11e9-b9bb-80fa5b45280e', 1),
+(21, 'test', 'test', '2019-05-28 15:46:25', 'test', '2019-05-28 15:46:25', 'test', 1),
+(22, 'c3bc5bc7-8212-11e9-899f-80fa5b45280e', '2', '2019-05-29 15:08:42', 'c3bc5bc7-8212-11e9-899f-80fa5b45280e', '2019-05-29 15:08:42', 'c3bc5bc7-8212-11e9-899f-80fa5b45280e', 1);
 
 -- --------------------------------------------------------
 
@@ -417,9 +447,11 @@ INSERT INTO `users` (`UserId`, `Email`, `CellphoneNumber`, `Password`, `CreateDa
 ('8d81d1a0-61af-11e9-ac92-80fa5b45280e', 'jkk@tr', 'vc', 'pass@123!', '2019-04-18 09:57:03', 'SYSTEM_WEB', '2019-04-18 09:57:03', 'SYSTEM_WEB', 1),
 ('9b351084-61b0-11e9-ac92-80fa5b45280e', 'fsd@sAS', '4324', 'pass@123!', '2019-04-18 10:04:36', 'SYSTEM_WEB', '2019-04-18 10:04:36', 'SYSTEM_WEB', 1),
 ('a39d2479-61b3-11e9-ac92-80fa5b45280e', 'gfd@dsd', '434', 'pass@123!', '2019-04-18 10:26:19', 'SYSTEM_WEB', '2019-04-18 10:26:19', 'SYSTEM_WEB', 1),
+('a55211ed-80ba-11e9-b9bb-80fa5b45280e', 'john.doe@mail.com22', '0725698888', 'pass', '2019-05-27 22:04:34', 'SYSTEM_WEB', '2019-05-27 22:04:34', 'SYSTEM_WEB', 3),
 ('af224651-7f16-11e9-a700-80fa5b45280e', 'john.doe@mail.com33', '0725698888', 'pass', '2019-05-25 19:58:22', 'SYSTEM_WEB', '2019-05-25 19:58:22', 'SYSTEM_WEB', 3),
 ('b0e825d1-7197-11e9-9e99-80fa5b45280e', 'wee@dsdsad2332321.com', '321321', 'pass@123!', '2019-05-08 15:46:33', 'SYSTEM_WEB', '2019-05-08 15:46:33', 'SYSTEM_WEB', 1),
 ('b37eb2ca-61b0-11e9-ac92-80fa5b45280e', 'fsd@DSAD', '343', 'pass@123!', '2019-04-18 10:05:17', 'SYSTEM_WEB', '2019-04-18 10:05:17', 'SYSTEM_WEB', 1),
+('c3bc5bc7-8212-11e9-899f-80fa5b45280e', 'thando@mail.com', '12554856', 'pass', '2019-05-29 15:07:51', 'SYSTEM_WEB', '2019-05-29 15:07:51', 'SYSTEM_WEB', 3),
 ('c40d0e11-7ee7-11e9-a700-80fa5b45280e', 'john.doe@mail.com', '0725698888', 'pass@123!', '2019-05-25 14:22:31', 'SYSTEM_WEB', '2019-05-25 14:22:31', 'SYSTEM_WEB', 4);
 
 -- --------------------------------------------------------
@@ -545,7 +577,7 @@ ALTER TABLE `statuses`
 -- AUTO_INCREMENT for table `userroles`
 --
 ALTER TABLE `userroles`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
