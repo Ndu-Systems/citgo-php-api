@@ -49,12 +49,16 @@ $to = "mrnnmthembu@gmail.com ,Freedom.Khanyile1@gmail.com, ".$email;
 $subject = 'Citgo  new account Confirmation';
 $from = 'ndumiso@ndu-systems.net';
  
-$headers  = 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-
-$headers .= 'From: '.$from."\r\n".
-    'Reply-To: '.$from."\r\n" .
-    'X-Mailer: PHP/' . phpversion();
+// headers
+$headers .= "Reply-To: The Sender <account@citgoafrica.com>\r\n"; 
+$headers .= "Return-Path: The Sender <account@citgoafrica.com>\r\n"; 
+$headers .= "From: The Sender <account@citgoafrica.com>\r\n";  
+$headers .= "Organization: Citgo Africa\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-type: text/plain; charset=iso-8859-1\r\n";
+$headers .= "X-Priority: 3\r\n";
+$headers .= "X-Mailer: PHP". phpversion() ."\r\n" ;
+//end headers
 if(isset($name)){    
 if(mail($to, $subject, $msg, $headers)){
     echo 1;
