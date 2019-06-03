@@ -17,7 +17,7 @@ if($result->rowCount()){
     $bonuses = $result->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($bonuses);
 }else{
-   echo json_encode(0);
+   echo json_encode(Array());
  
 }
 
