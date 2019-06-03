@@ -30,7 +30,6 @@ class Bonus
 
     //Add
     public function add(
-        $bonusId,
         $Amount,
         $ClientId,
         $ParentId,
@@ -53,7 +52,6 @@ class Bonus
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $bonusId,
                 $Amount,
                 $ClientId,
                 $ParentId,
@@ -62,7 +60,7 @@ class Bonus
                 $StatusId
                 
             ))) {
-                return true;
+                return $this->getClientById($ClientId);
             }
         } catch (Exception $e) {
             return $e;
@@ -96,5 +94,20 @@ class Bonus
         } catch (Exception $e) {
             return $e;
         }
+    }
+
+    //get cleint to return
+    public function getClientById($ClientId)
+    {
+
+        $query = "SELECT * FROM clients WHERE ClientId = ?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($ClientId));
+        $cleint  = null;
+        if($stmt->rowCount()){
+            $cleint = $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        return $cleint;
     }
 }

@@ -4,12 +4,10 @@ include_once '../../models/Bonus.php';
 
 $data = json_decode(file_get_contents("php://input"));
 
-$ClientId =$data->ClientId;
-$InvestmentId=$data->InvestmentId;
-$DocumentCode=$data->DocumentCode; 
-$DocumentName=$data->DocumentName; 
-$DocumentUrl=$data->DocumentUrl;
-$CreateUserId=$data->CreateUserId; 
+$Amount=$data->Amount;
+$ClientId=$data->ClientId;
+$ParentId=$data->ParentId;
+$CreateUserId=$data->CreateUserId;
 $ModifyUserId=$data->ModifyUserId;
 $StatusId=$data->StatusId;
 //connect to db
@@ -21,7 +19,6 @@ $db = $database->connect();
 $bonus = new Bonus($db);
 
 $result = $bonus->add(
-    $bonusId,
     $Amount,
     $ClientId,
     $ParentId,

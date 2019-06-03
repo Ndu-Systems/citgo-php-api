@@ -12,11 +12,12 @@ $db = $database->connect();
 $bonuses = new Bonus($db);
 
 $result = $bonuses->getClientBonuses($ClientId);
-$outPut = array();
 
 if($result->rowCount()){
     $bonuses = $result->fetchAll(PDO::FETCH_ASSOC);
-    $outPut['bonuses'] = $bonuses;
+    echo json_encode($bonuses);
+}else{
+   echo json_encode(0);
+ 
 }
-echo json_encode($outPut);
 
