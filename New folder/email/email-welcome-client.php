@@ -12,7 +12,7 @@ $link= $data->link;
  <div
  style='position:relative;width:80%;font-family:Trebuchet MS;background-color:#ecf0f1;box-sizing: border-box;margin: auto; padding: 3%;'>
  <h2 style='text-align: center;width:100%;'>
-   Welcome Citgo Africa - Stater Pack
+   Welcome to Citgo Africa - Stater Pack
  </h2>
  <div style='width:100%;padding:3%;padding-bottom: 1%;'>
    <p style='text-align:left;width:80%;'>
@@ -38,7 +38,7 @@ $link= $data->link;
      style='width:100%;text-align:left;padding-top:2%;border-top-width:1px;border-top-style:solid;border-top-color:rgb(199, 199, 199);'>
      Regrads <br>
      Citgo  Team <br>
-     account@citgoafrica.com
+     shares@citgoafrica.com
    </p>
  </div>
 </div>
@@ -48,14 +48,13 @@ $link= $data->link;
 $to = "mrnnmthembu@gmail.com ,Freedom.Khanyile1@gmail.com, ".$email;
 $subject = 'Citgo  new account Confirmation';
 $from = 'ndumiso@ndu-systems.net';
- 
 // headers
-$headers .= "Reply-To: The Sender <account@citgoafrica.com>\r\n"; 
-$headers .= "Return-Path: The Sender <account@citgoafrica.com>\r\n"; 
-$headers .= "From: The Sender <account@citgoafrica.com>\r\n";  
+$headers .= "Reply-To: Citgo Africa <shares@citgoafrica.com>\r\n"; 
+$headers .= "Return-Path: Citgo Africa\ <shares@citgoafrica.com>\r\n"; 
+$headers .= "From:Citgo Africa\ <shares@citgoafrica.com>\r\n";  
 $headers .= "Organization: Citgo Africa\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-type: text/plain; charset=iso-8859-1\r\n";
+$headers .= "Content-type: text/html; charset=UTF-8\r\n";
 $headers .= "X-Priority: 3\r\n";
 $headers .= "X-Mailer: PHP". phpversion() ."\r\n" ;
 //end headers

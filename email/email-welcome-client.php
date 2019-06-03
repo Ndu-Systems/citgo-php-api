@@ -38,7 +38,7 @@ $link= $data->link;
      style='width:100%;text-align:left;padding-top:2%;border-top-width:1px;border-top-style:solid;border-top-color:rgb(199, 199, 199);'>
      Regrads <br>
      Citgo  Team <br>
-     account@citgoafrica.com
+     shares@citgoafrica.com
    </p>
  </div>
 </div>
