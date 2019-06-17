@@ -13,6 +13,7 @@ $Type=$data->Type;
 $ModifyUserId=$data->ModifyUserId;
 $StatusId=$data->StatusId;
 $InvestmentId=$data->InvestmentId;
+$bankId=$data->bankId;
 //connect to db
 $database = new Database();
 $db = $database->connect();
@@ -28,7 +29,8 @@ $result = $investment->updateInvestment(
     $Type,
     $ModifyUserId,
     $StatusId,
-    $InvestmentId
+    $InvestmentId,
+    $bankId
 );
 
 echo json_encode($result);

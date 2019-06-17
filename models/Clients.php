@@ -243,13 +243,22 @@ class Clients
     {
 
         $query = "
-        SELECT 
-            c.ClientId, c.FirstName, c.Surname, c.StatusId , sum(i.Amount) as Shares
-            FROM
+            SELECT 
+        c.ClientId,
+        c.FirstName,
+        c.Surname,
+        c.StatusId,
+        c.Gender,
+        c.CreateDate,
+        SUM(i.Amount) AS Shares,
+        COUNT(i.ClientId) AS NumberOfShares
+    FROM
         clients c
-        LEFT JOIN
-         investment i ON c.ClientId = i.ClientId
-            group by i.ClientId
+            LEFT JOIN
+        investment i ON c.ClientId = i.ClientId
+    WHERE
+        i.Amount > 0
+    GROUP BY i.ClientId; 
         ";
 
         $stmt = $this->conn->prepare($query);

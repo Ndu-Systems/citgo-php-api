@@ -105,7 +105,8 @@ class Investments
         $Type,
         $ModifyUserId,
         $StatusId,
-        $InvestmentId
+        $InvestmentId,
+        $bankId
     ) {
         $query = "
             UPDATE investment SET  
@@ -117,7 +118,8 @@ class Investments
                 Type=?, 
                 ModifyDate=now(), 
                 ModifyUserId=?, 
-                StatusId=? 
+                StatusId=? ,
+                bankId=? 
                 WHERE 
                 InvestmentId =?
 
@@ -134,6 +136,7 @@ class Investments
                 $Type,
                 $ModifyUserId,
                 $StatusId,
+                $bankId,
                 $InvestmentId
             ))) {
                 return $this->getInvestmentById($InvestmentId);
