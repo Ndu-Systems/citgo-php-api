@@ -136,7 +136,7 @@ class Users
         WHERE 
         u.Email =  ?
         AND 
-        u.Password = ?
+        BINARY u.Password = ?
         ";
 
         //Prepare statement
@@ -190,7 +190,7 @@ class Users
         $StatusId,
         $UserId
     ) {
-        $query = "UPDATE users SET Email=?,CellphoneNumber=?, Password=?, ModifyUserId=?, StatusId=? WHERE UserId = ?";
+        $query = "UPDATE users SET Email=?,CellphoneNumber=?, Password=?, ModifyUserId=?, StatusId=?, ModifyDate=NOW() WHERE UserId = ?";
 
         try {
             $stmt = $this->conn->prepare($query);
@@ -202,10 +202,22 @@ class Users
                 $StatusId,
                 $UserId
             ))) {
-                return $UserId;
+                return $this->getUserById($UserId);
             }
         } catch (Exception $e) {
             return $e;
+        }
+    }
+
+    public function getUserById($UserId)
+    {
+        $query = "SELECT * FROM users WHERE UserId =?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($UserId));
+
+        if ($stmt->rowCount()) {
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         }
     }
 }

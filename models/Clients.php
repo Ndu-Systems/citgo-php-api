@@ -42,27 +42,16 @@ class Clients
         return $stmt;
     }
 
-    public function getById($PatientId)
+    public function getById($ClientId)
     {
 
-        $query = "
-        select patient.PatientId, patient.FirstName, patient.DOB, patient.Surname,patient.IdNumber,patient.Email,patient.Cellphone,patient.Gender,patient.CreateDate,patient.AddressLine1,patient.City ,patient.PostCode ,
-        medicalaid.MedicalaidId, medicalaid.MedicalaidName, medicalaid.MedicalaidType, medicalaid.MemberShipNumber, medicalaid.PrimaryMember, medicalaid.PrimaryMemberId,
-        count(appointment.AppointmentId) as NumAppointments 
-        from patient 
-        left join  medicalaid on medicalaid.PatientId = patient.PatientId   
-        left join appointment on appointment.PatientId = patient.PatientId        
-        where patient.PatientId = ?		
-		GROUP by patient.PatientId
-        ";
-
-        //Prepare statement
+        $query = "SELECT * from clients where ClientId = ?";
         $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($ClientId));
 
-        //Execute query
-        $stmt->execute(array($PatientId));
-
-        return $stmt;
+        if ($stmt->rowCount()) {
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
     }
     //Get user by Email
     public function getByUserId($UserId)
@@ -189,7 +178,7 @@ class Clients
         $MiddleName,
         $Surname,
         $IDNumber,
-        $UserId,
+        $ClientId,
         $Gender,
         $Province,     
         $City,
@@ -212,8 +201,9 @@ class Clients
             PostCode=?,
             Address=?,
             StatusId=?,        
-            ModifyUserId=?
-            WHERE UserId =?
+            ModifyUserId=?,
+            ModifyDate=NOW()
+            WHERE ClientId =?
          ";            
             try {
                 $stmt = $this->conn->prepare($query);          
@@ -230,15 +220,17 @@ class Clients
                     $Address,
                     $StatusId,                 
                     $ModifyUserId,
-                    $UserId
+                    $ClientId
                 ))) {
-                    return $UserId;
+                    return $this->getById($ClientId);
                 }
             } catch (Exception $e) {
                 return $e;
             }
     }
-    // Get clients with thier investments
+
+    
+  
     public function getClientAndShares()
     {
 

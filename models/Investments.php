@@ -75,6 +75,7 @@ class Investments
             ModifyDate,
             ModifyUserId,
             StatusId,
+            bankId,
             CASE
             WHEN StatusId = 1 THEN 'ACTIVE'
             WHEN StatusId = 2 THEN 'PENDING'
