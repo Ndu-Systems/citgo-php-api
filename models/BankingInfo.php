@@ -13,20 +13,15 @@ class BankingInfo
         $this->conn = $db;
     }
 
-
-    public function getActive()
-    {
-
-        $query = "SELECT * FROM bankingdetails WHERE Status =? ORDER BY QuiID";
-
-        //Prepare statement
+public function getClientBankingDetails($ClientId){
+    $query = "SELECT * from bankingdetails where ClientId = ?";
         $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($ClientId));
 
-        //Execute query
-        $stmt->execute(array(1));
-
-        return $stmt;
-    }
+        if ($stmt->rowCount()) {
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+}
 
     //Add  
     public function add(
@@ -73,14 +68,57 @@ class BankingInfo
 
     //update  
     public function update(
-        $QuiID
+        $ClientId,
+        $BankName,
+        $BankBranch,
+        $AccountNumber,
+        $AccountType,
+        $CreateUserId,
+        $ModifyUserId,
+        $StatusId,
+        $BankingDetailsId
     ) {
-        $query = "UPDATE que SET Status = ? Where QuiID=? ";
+        $query = "UPDATE bankingdetails  set
+                 ClientId=?,
+                BankName=?,
+                BankBranch=?,
+                AccountNumber=?,
+                AccountType=?,
+                CreateUserId=?,
+                ModifyDate=Now(),
+                ModifyUserId=?,
+                StatusId=?
+                where 
+                BankingDetailsId =?
+        
+        ";
         try {
             $stmt = $this->conn->prepare($query);
-            return $stmt->execute(array(2, $QuiID));
+            $stmt->execute(array(  
+            $ClientId,
+            $BankName,
+            $BankBranch,
+            $AccountNumber,
+            $AccountType,
+            $CreateUserId,
+            $ModifyUserId,
+            $StatusId,
+            $BankingDetailsId));
+
+            return $this->getById($ClientId);
         } catch (Exception $e) {
             return $e;
+        }
+    }
+    public function getById($ClientId)
+    {
+
+        $query = "SELECT * from bankingdetails where ClientId = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($ClientId));
+
+        if ($stmt->rowCount()) {
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         }
     }
 }

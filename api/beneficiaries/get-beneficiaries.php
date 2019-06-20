@@ -1,6 +1,6 @@
 <?php
 include_once '../../config/Database.php';
-include_once '../../models/BankingInfo.php';
+include_once '../../models/Beneficiaries.php';
 
 $data = json_decode(file_get_contents("php://input"));
 $ClientId = $_GET['ClientId'];
@@ -11,9 +11,9 @@ $db = $database->connect();
 
 //Instantiate user object
 
-$request = new BankingInfo($db);
+$request = new Beneficiaries($db);
 
-$result = $request->getClientBankingDetails($ClientId);
+$result = $request->getClientBeneficiaries($ClientId);
 echo json_encode($result);
 
 

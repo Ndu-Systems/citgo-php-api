@@ -1,7 +1,6 @@
 <?php
 include_once '../../config/Database.php';
 include_once '../../models/Beneficiaries.php';
-include_once '../../models/Clients.php';
 
 $data = json_decode(file_get_contents("php://input"));
 $beneficiaries  = $data->beneficiaries;

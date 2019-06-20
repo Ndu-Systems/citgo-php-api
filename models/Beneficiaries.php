@@ -13,19 +13,14 @@ class Beneficiaries
         $this->conn = $db;
     }
 
-
-    public function getActive()
-    {
-
-        $query = "SELECT * FROM beneficiaries WHERE Status =? ORDER BY QuiID";
-
-        //Prepare statement
-        $stmt = $this->conn->prepare($query);
-
-        //Execute query
-        $stmt->execute(array(1));
-
-        return $stmt;
+    public function getClientBeneficiaries($ClientId){
+        $query = "SELECT * from beneficiaries where ClientId = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute(array($ClientId));
+    
+            if ($stmt->rowCount()) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
     }
 
     //Add  
@@ -73,14 +68,58 @@ class Beneficiaries
 
     //update  
     public function update(
-        $QuiID
+        $ClientId,
+        $Name,
+        $Surname,
+        $IDNumber,
+        $Relation,
+        $CreateUserId,
+        $ModifyUserId,
+        $StatusId,
+        $BeneficiaryId
     ) {
-        $query = "UPDATE que SET Status = ? Where QuiID=? ";
-        try {
-            $stmt = $this->conn->prepare($query);
-            return $stmt->execute(array(2, $QuiID));
-        } catch (Exception $e) {
-            return $e;
+        $query = "UPDATE beneficiaries  set
+        ClientId=?,
+        Name=?,
+        Surname=?,
+        IDNumber=?,
+        Relation=?,
+       CreateUserId=?,
+       ModifyDate=Now(),
+       ModifyUserId=?,
+       StatusId=?
+       where 
+       BeneficiaryId =?
+
+";
+try {
+   $stmt = $this->conn->prepare($query);
+   $stmt->execute(array(  
+    $ClientId,
+    $Name,
+    $Surname,
+    $IDNumber,
+    $Relation,
+    $CreateUserId,
+    $ModifyUserId,
+    $StatusId,
+    $BeneficiaryId
+));
+
+   return $this->getById($ClientId);
+} catch (Exception $e) {
+   return $e;
+}
+    }
+    public function getById($ClientId)
+    {
+
+        $query = "SELECT * from beneficiaries where ClientId = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($ClientId));
+
+        if ($stmt->rowCount()) {
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         }
     }
 }
