@@ -114,7 +114,7 @@ try {
     public function getById($ClientId)
     {
 
-        $query = "SELECT * from beneficiaries where ClientId = ?";
+        $query = "SELECT * from beneficiaries where BeneficiaryId = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($ClientId));
 
