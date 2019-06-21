@@ -12,7 +12,7 @@ $link= $data->link;
  <div
  style='position:relative;width:80%;font-family:Trebuchet MS;background-color:#ecf0f1;box-sizing: border-box;margin: auto; padding: 3%;'>
  <h2 style='text-align: center;width:100%;'>
-   Welcome to Citgo Africa
+   Update my contact details
  </h2>
  <div style='width:100%;padding:3%;padding-bottom: 1%;'>
    <p style='text-align:left;width:80%;'>
@@ -20,11 +20,10 @@ $link= $data->link;
 
      Hello $name <br>
      <br>
-     We’re excited to have you as our newest Citgo member.
-     Please confirm your account with us by clicking the button below:
+     To make sure you don't lose access to your profile,  please obtain your contact details update screen by clicking the button below:
      <div style='width:100%; text-align: left;padding:1%;margin: 2rem 0;
      '>
-       <a  style=' text-decoration: none; background-color: #1871CA;border: none;color: white; padding: 12px 16px;font-size: 16px;cursor: pointer;box-sizing: border-box;border-radius: 30px;text-transform: capitalize;' href=$link>Confirm my account</a>
+       <a  style=' text-decoration: none; background-color: #1871CA;border: none;color: white; padding: 12px 16px;font-size: 16px;cursor: pointer;box-sizing: border-box;border-radius: 30px;text-transform: capitalize;' href=$link>Update my contact details</a>
      </div>
 
 
@@ -46,7 +45,7 @@ $link= $data->link;
 ";
 
 $to = "mrnnmthembu@gmail.com ,Freedom.Khanyile1@gmail.com, ".$email;
-$subject = 'Citgo  new account Confirmation';
+$subject = 'Update my contact details';
 $from = 'shares@citgoafrica.com';
  
 $headers  = 'MIME-Version: 1.0' . "\r\n";

@@ -47,7 +47,7 @@ public function getClientBankingDetails($ClientId){
                                         ModifyUserId,
                                         StatusId
                                         )
-                    VALUES (UUID(),?, ?, ?, ?, ?, ?, ?, ?)           
+                    VALUES (UUID(),?, ?, ?, ?, ?,?, ?, ?, ?)           
                    ";
         try {
             $stmt = $this->conn->prepare($query);
