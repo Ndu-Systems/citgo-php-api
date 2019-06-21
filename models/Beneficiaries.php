@@ -106,17 +106,17 @@ try {
     $BeneficiaryId
 ));
 
-   return $this->getById($ClientId);
+   return $this->getById($BeneficiaryId);
 } catch (Exception $e) {
    return $e;
 }
     }
-    public function getById($ClientId)
+    public function getById($BeneficiaryId)
     {
 
         $query = "SELECT * from beneficiaries where BeneficiaryId = ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(array($ClientId));
+        $stmt->execute(array($BeneficiaryId));
 
         if ($stmt->rowCount()) {
             return $stmt->fetch(PDO::FETCH_ASSOC);
