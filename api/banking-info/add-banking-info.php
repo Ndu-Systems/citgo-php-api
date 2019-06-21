@@ -7,6 +7,7 @@ $data = json_decode(file_get_contents("php://input"));
 
 $ClientId  = $data->ClientId;
 $BankName = $data->BankName;
+$AccountHolder = $data->AccountHolder;
 $BankBranch = $data->BankBranch;
 $AccountNumber = $data->AccountNumber;
 $AccountType = $data->AccountType;
@@ -24,6 +25,7 @@ $bankingInfo = new BankingInfo($db);
 $result = $bankingInfo->add(
     $ClientId,
     $BankName,
+    $AccountHolder,
     $BankBranch,
     $AccountNumber,
     $AccountType,

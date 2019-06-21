@@ -27,6 +27,7 @@ public function getClientBankingDetails($ClientId){
     public function add(
         $ClientId,
         $BankName,
+        $AccountHolder,
         $BankBranch,
         $AccountNumber,
         $AccountType,
@@ -38,6 +39,7 @@ public function getClientBankingDetails($ClientId){
                                         BankingDetailsId,
                                         ClientId,
                                         BankName,
+                                        AccountHolder,
                                         BankBranch,
                                         AccountNumber,
                                         AccountType,
@@ -52,6 +54,7 @@ public function getClientBankingDetails($ClientId){
             if ($stmt->execute(array(
                 $ClientId,
                 $BankName,
+                $AccountHolder,
                 $BankBranch,
                 $AccountNumber,
                 $AccountType,
@@ -70,6 +73,7 @@ public function getClientBankingDetails($ClientId){
     public function update(
         $ClientId,
         $BankName,
+        $AccountHolder,
         $BankBranch,
         $AccountNumber,
         $AccountType,
@@ -81,6 +85,7 @@ public function getClientBankingDetails($ClientId){
         $query = "UPDATE bankingdetails  set
                  ClientId=?,
                 BankName=?,
+                AccountHolder=?,
                 BankBranch=?,
                 AccountNumber=?,
                 AccountType=?,
@@ -97,6 +102,7 @@ public function getClientBankingDetails($ClientId){
             $stmt->execute(array(  
             $ClientId,
             $BankName,
+            $AccountHolder,
             $BankBranch,
             $AccountNumber,
             $AccountType,

@@ -8,6 +8,7 @@ $data = json_decode(file_get_contents("php://input"));
 $ClientId  = $data->ClientId;
 $BankingDetailsId  = $data->BankingDetailsId;
 $BankName = $data->BankName;
+$AccountHolder = $data->AccountHolder;
 $BankBranch = $data->BankBranch;
 $AccountNumber = $data->AccountNumber;
 $AccountType = $data->AccountType;
@@ -25,6 +26,7 @@ $request = new BankingInfo($db);
 $result = $request->update(
     $ClientId,
     $BankName,
+    $AccountHolder,
     $BankBranch,
     $AccountNumber,
     $AccountType,
