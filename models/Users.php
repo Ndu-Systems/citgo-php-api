@@ -121,11 +121,25 @@ class Users
             return  $user['UserId'];
         }
     }
+    public function getUserByIdAndEmail($email,$UserId)
+    {
+        $query = "SELECT * FROM users WHERE Email = ? and  UserId =?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($email, $UserId));
+
+        if ($stmt->rowCount()) {
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            $user['Password'] = null;
+            return  $user['UserId'];
+        }
+    }
     //Get a user
     public function getUserByEmailandPassword($email, $password)
     {
         $query = "SELECT         
         u.UserId,  
+        u.Email,  
         r.RoleId as Role,
         c.ClientId
         FROM 
