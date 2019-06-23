@@ -67,11 +67,39 @@ class Clients
     public function getClientById($ClientId)
     {
 
-        $query = "SELECT * FROM clients 
-         inner join 
-         users on users.UserId = clients.UserId 
-         inner join bankingdetails on clients.ClientId = bankingdetails.ClientId
-         WHERE clients.ClientId = ?";
+        $query = "SELECT 
+        c.ClientId,
+        c.UserId,
+        c.FirstName,
+        c.MiddleName,
+        c.Surname,
+        c.Province,
+        c.Address,
+        c.IDNumber,
+        c.Gender,
+        c.Country,
+        c.City,
+        c.PostCode,
+        c.ParentId,
+        c.StatusId AS ClientStatus,
+        b.BankingDetailsId,
+        b.BankName,
+        b.AccountHolder,
+        b.BankBranch,
+        b.AccountNumber,
+        b.AccountType,
+        u.UserId,
+        u.Email,
+        u.CellphoneNumber,
+        u.StatusId
+    FROM
+        clients c
+            INNER JOIN
+        users u ON u.UserId = c.UserId
+            LEFT JOIN
+        bankingdetails b ON c.ClientId = b.ClientId
+    WHERE
+        c.ClientId  = ?";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($ClientId));
