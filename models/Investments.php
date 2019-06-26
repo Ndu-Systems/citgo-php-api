@@ -65,6 +65,8 @@ class Investments
             InvestmentId,
             ClientId,
             Amount,
+            DATEDIFF(Now(), CreateDate) as DaysNow,
+            (DATEDIFF(Now(), CreateDate)*Amount*0.005) + Amount AS Growth,
             Profit,
             Total,
             Name,
