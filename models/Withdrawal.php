@@ -29,8 +29,22 @@ class Withdrawal
     }
     public function getWithdrawalsForClient($ClientId)
     {
-        $query = "SELECT * FROM withdrawal w left join clientwithdrawals cw 
-                        on w.WithdrawalId = cw.WithdrawalId WHERE cw.ClientId=?";
+        $query = "
+                SELECT
+                w.WithdrawalId,
+                w.Amount,
+                w.CreateDate AS WithdrawalCreateDate,
+                cw.Id,
+                cw.SourceInvestmentId,
+                cw.SourceBonusId,
+                cw.Amount
+                FROM
+                clientwithdrawals cw
+                JOIN withdrawal w ON
+                cw.WithdrawalId = w.WithdrawalId
+                WHERE
+                cw.ClientId =?
+        ";
 
         //Prepare statement
         $stmt = $this->conn->prepare($query);
@@ -66,7 +80,7 @@ class Withdrawal
                 $Amount,
                 $CreateUserId,
                 $ModifyUserId,
-                $StatusId            
+                $StatusId
             ))) {
                 return $this->getById($id);
             }
@@ -109,13 +123,12 @@ class Withdrawal
     //get cleint to return
     public function getById($WithdrawalId)
     {
-
         $query = "SELECT * FROM withdrawal WHERE WithdrawalId = ?";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($WithdrawalId));
         $cleint  = null;
-        if($stmt->rowCount()){
+        if ($stmt->rowCount()) {
             $cleint = $stmt->fetch(PDO::FETCH_ASSOC);
         }
         return $cleint;
