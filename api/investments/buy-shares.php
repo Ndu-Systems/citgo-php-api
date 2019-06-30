@@ -8,6 +8,7 @@ $data = json_decode(file_get_contents("php://input"));
 $Amount = $data->Amount;
 $Name = $data->Name;
 $Type = $data->Type;
+$Ref = $data->Ref;
 $ClientId = $data->ClientId;
 
 //connect to db
@@ -16,7 +17,7 @@ $db = $database->connect();
 
 $investment = new Investments($db);
 
-$result = $investment->insert($Amount,$ClientId,$Name,$Type);
+$result = $investment->insert($Amount,$ClientId,$Name,$Type,$Ref);
 
 if($result > 0){
     $output = $investment->readByClientId($ClientId);

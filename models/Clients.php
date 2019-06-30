@@ -69,11 +69,13 @@ class Clients
 
         $query = "SELECT 
         c.ClientId,
+        c.ClientRef,
         c.UserId,
         c.FirstName,
         c.MiddleName,
         c.Surname,
         c.Province,
+        c.CreateUserId,
         c.Address,
         c.IDNumber,
         c.Gender,

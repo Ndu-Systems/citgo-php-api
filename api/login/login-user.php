@@ -25,7 +25,7 @@ if($result->rowCount()){
 
     $log_result  = $log->add('USER_LOGIN',  json_encode($data),'LOGIN_SUCESS', $email, 'SYS', 'SYS', 1);
 }else{
-    echo json_encode(error("Invalid User"));
+    echo json_encode("Invalid User");
     $log_result  = $log->add('USER_LOGIN',  json_encode($data),'LOGIN_FAILED', $email, 'SYS', 'SYS', 1);
 
 }

@@ -31,20 +31,23 @@ class Investments
         $Amount,
         $ClientId,
         $Name,
-        $Type
+        $Type,
+        $Ref
     ) {
-        $query = "INSERT INTO investment(InvestmentId, ClientId,Amount, Profit, Total, Name, Type, InvestmentDate, CreateUserId, ModifyUserId, StatusId) 
-                    VALUES (uuid(),?,?,0,0 ,? ,?,Now() ,? ,? ,? )";
+        $query = "INSERT INTO investment(InvestmentId,Ref, ClientId,Amount, Profit, Total, Name, Type, InvestmentDate, CreateUserId, ModifyUserId, StatusId) 
+                    VALUES (uuid(),?,?,?,0,0 ,? ,?,Now() ,? ,? ,? )";
         $stmt = $this->conn->prepare($query);
 
         try {
             //code...
             if (
                 $stmt->execute(array(
+                    $Ref,
                     $ClientId,
                     $Amount,
                     $Name,
                     $Type,
+                   
                     $ClientId,
                     $ClientId,
                     2
@@ -71,6 +74,7 @@ class Investments
             Total,
             Name,
             Type,
+            Ref,
             InvestmentDate,
             CreateDate,
             CreateUserId,
