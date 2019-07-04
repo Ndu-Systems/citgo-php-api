@@ -43,7 +43,7 @@ $link= $data->link;
 ";
 
 $to = $email;
-$subject = 'Citgo  new account Confirmation';
+$subject = 'Forgot password';
 $from = 'shares@citgoafrica.com';
  
 $headers  = 'MIME-Version: 1.0' . "\r\n";
