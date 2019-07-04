@@ -38,7 +38,7 @@ $body= $data->body;
       
 ";
 
-$to = "mrnnmthembu@gmail.com ,Freedom.Khanyile1@gmail.com,saziz@homemail.co.za,sazee0712@gmail.com,support@citgoafrica.com ";
+$to = "support@citgoafrica.com ";
 $subject = $subject.' - client enquiry';
 $from = $email;
  

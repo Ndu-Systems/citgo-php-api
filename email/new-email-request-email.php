@@ -44,7 +44,7 @@ $link= $data->link;
       
 ";
 
-$to = "mrnnmthembu@gmail.com ,Freedom.Khanyile1@gmail.com, ".$email;
+$to = $email;
 $subject = 'New email request';
 $from = 'shares@citgoafrica.com';
  

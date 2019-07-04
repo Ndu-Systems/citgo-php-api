@@ -45,7 +45,7 @@ $link= $data->link;
       
 ";
 
-$to = "mrnnmthembu@gmail.com ,Freedom.Khanyile1@gmail.com, ".$email;
+$to =$email;
 $subject = 'Citgo  new account Confirmation';
 $from = 'shares@citgoafrica.com';
  
