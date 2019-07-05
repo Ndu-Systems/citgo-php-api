@@ -22,7 +22,7 @@ class Stat
         SELECT 
         (SELECT COUNT(*) FROM investment where StatusId=1) AS activeShares ,
         (SELECT COUNT(*) FROM investment where StatusId=2) AS pendingShares,
-         (SELECT COUNT(*) FROM investment where StatusId=4) AS awiatingConframation,
+         (SELECT COUNT(*) FROM investment where StatusId=3) AS awiatingConframation,
          
         (SELECT COUNT(*) FROM clients where StatusId = 1) AS activeClients,
         (SELECT COUNT(*) FROM clients where StatusId = 4) AS waitingAccountConfirmation,
