@@ -197,7 +197,25 @@ class Investments
     }
     public function getInvestmentByStatus($StatusId)
     {
-        $query = "select * from investment i left join documents d on  d.InvestmentId = i.InvestmentId where i.StatusId =?";
+        $query = '
+       SELECT 
+        i.InvestmentId,
+            i.Amount,
+            i.CreateDate,
+            DATEDIFF(NOW(), i.CreateDate) AS DaysNow,
+            (DATEDIFF(NOW(), i.CreateDate) * Amount * 0.005) + Amount AS Growth,
+            d.DocumentUrl,
+            CONCAT(c.FirstName ," ", c.Surname) as ClientName,
+            c.IDNumber
+        FROM
+            investment i
+                LEFT JOIN
+            documents d ON d.InvestmentId = i.InvestmentId
+            LEFT JOIN
+            clients c on i.ClientId = c.ClientId
+        WHERE
+            i.StatusId = ?
+    ';
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($StatusId));

@@ -20,17 +20,22 @@ class Stat
 
         $query = "
         SELECT 
-            (SELECT COUNT(*) FROM investment where StatusId=?) AS pendingShares,
-            (SELECT COUNT(*) FROM investment where StatusId=?) AS activeShares,
-            (SELECT COUNT(*) FROM clients where StatusId = ?) AS activeClients
-        FROM DUAL
+        (SELECT COUNT(*) FROM investment where StatusId=1) AS activeShares ,
+        (SELECT COUNT(*) FROM investment where StatusId=2) AS pendingShares,
+         (SELECT COUNT(*) FROM investment where StatusId=4) AS awiatingConframation,
+         
+        (SELECT COUNT(*) FROM clients where StatusId = 1) AS activeClients,
+        (SELECT COUNT(*) FROM clients where StatusId = 4) AS waitingAccountConfirmation,
+        (SELECT COUNT(*) FROM clients where StatusId = 10) AS blockedClients
+        
+    FROM DUAL 
         ";
 
         //Prepare statement
         $stmt = $this->conn->prepare($query);
 
         //Execute query
-        $stmt->execute(array(3,1,1));
+        $stmt->execute(array());
         if ($stmt->rowCount()) {
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }else{
