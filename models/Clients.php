@@ -276,7 +276,7 @@ class Clients
     {
 
         $query = "
-            SELECT 
+        SELECT 
         c.ClientId,
         c.FirstName,
         c.Surname,
@@ -289,8 +289,7 @@ class Clients
         clients c
             LEFT JOIN
         investment i ON c.ClientId = i.ClientId
-    WHERE
-        i.Amount > 0
+
     GROUP BY i.ClientId; 
         ";
 
@@ -300,5 +299,55 @@ class Clients
         if ($stmt->rowCount()) {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+    }
+
+
+    // admin
+    public function getClientsByStatus($StatusId)
+    {
+
+        $query = "SELECT 
+        c.ClientId,
+        c.ClientRef,
+        c.UserId,
+        c.FirstName,
+        c.MiddleName,
+        c.Surname,
+        c.Province,
+        c.CreateUserId,
+        c.Address,
+        c.IDNumber,
+        c.Gender,
+        c.Country,
+        c.City,
+        c.PostCode,
+        c.ParentId,
+        c.StatusId AS ClientStatus,
+        b.BankingDetailsId,
+        b.BankName,
+        b.AccountHolder,
+        b.BankBranch,
+        b.AccountNumber,
+        b.AccountType,
+        u.UserId,
+        u.Email,
+        u.CellphoneNumber,
+        u.StatusId
+    FROM
+        clients c
+            INNER JOIN
+        users u ON u.UserId = c.UserId
+            LEFT JOIN
+        bankingdetails b ON c.ClientId = b.ClientId
+    WHERE
+        c.StatusId  = ?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($StatusId));
+        $cleint  = null;
+        if($stmt->rowCount()){
+            $cleint = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $cleint;
     }
 }
