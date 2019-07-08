@@ -24,8 +24,8 @@ class Stat
         (SELECT COUNT(*) FROM investment where StatusId=2) AS pendingShares,
          (SELECT COUNT(*) FROM investment where StatusId=3) AS awiatingConframation,
          
-        (SELECT COUNT(*) FROM clients where StatusId = 1) AS activeClients,
-        (SELECT COUNT(*) FROM clients where StatusId = 4) AS waitingAccountConfirmation,
+        (SELECT COUNT(*) FROM clients where StatusId =4 ) AS activeClients,
+        (SELECT COUNT(*) FROM clients where StatusId = 2) AS waitingAccountConfirmation,
         (SELECT COUNT(*) FROM clients where StatusId = 10) AS blockedClients
         
     FROM DUAL 

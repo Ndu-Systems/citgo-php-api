@@ -198,15 +198,22 @@ class Investments
     public function getInvestmentByStatus($StatusId)
     {
         $query = '
-       SELECT 
+        SELECT 
         i.InvestmentId,
             i.Amount,
             i.CreateDate,
+            i.Profit,
+            i.Total,
+            i.Name,
+            i.Type,
+            i.bankId,
             DATEDIFF(NOW(), i.CreateDate) AS DaysNow,
             (DATEDIFF(NOW(), i.CreateDate) * Amount * 0.005) + Amount AS Growth,
             d.DocumentUrl,
             CONCAT(c.FirstName ," ", c.Surname) as ClientName,
-            c.IDNumber
+             c.IDNumber,
+             c.ClientId,
+             c.UserId as ModifyUserId
         FROM
             investment i
                 LEFT JOIN
