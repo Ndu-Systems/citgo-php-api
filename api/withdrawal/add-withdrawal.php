@@ -8,6 +8,7 @@ $Amount=$data->Amount;
 $CreateUserId=$data->CreateUserId;
 $ModifyUserId=$data->ModifyUserId;
 $StatusId=$data->StatusId;
+$ClientId=$data->ClientId;
 //connect to db
 $database = new Database();
 $db = $database->connect();
@@ -19,6 +20,7 @@ $result = $withdrawal->add(
     $Amount,
     $CreateUserId,
     $ModifyUserId,
-    $StatusId
+    $StatusId,
+    $ClientId
 );
 echo json_encode($result);

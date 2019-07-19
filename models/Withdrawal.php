@@ -29,22 +29,7 @@ class Withdrawal
     }
     public function getWithdrawalsForClient($ClientId)
     {
-        $query = "
-                SELECT
-                w.WithdrawalId,
-                w.Amount,
-                w.CreateDate AS WithdrawalCreateDate,
-                cw.Id,
-                cw.SourceInvestmentId,
-                cw.SourceBonusId,
-                cw.Amount
-                FROM
-                clientwithdrawals cw
-                JOIN withdrawal w ON
-                cw.WithdrawalId = w.WithdrawalId
-                WHERE
-                cw.ClientId =?
-        ";
+        $query = "SELECT * from Withdrawal WHERE ClientId =?";
 
         //Prepare statement
         $stmt = $this->conn->prepare($query);
@@ -60,7 +45,8 @@ class Withdrawal
         $Amount,
         $CreateUserId,
         $ModifyUserId,
-        $StatusId
+        $StatusId,
+        $ClientId
 
     ) {
         $query = "INSERT INTO withdrawal (
@@ -68,9 +54,10 @@ class Withdrawal
                                     Amount,
                                     CreateUserId,
                                     ModifyUserId,
-                                    StatusId
+                                    StatusId,
+                                    ClientId
                                         )
-                    VALUES (?, ?, ?, ?, ?)           
+                    VALUES (?, ?, ?, ?, ?,?)           
                    ";
         $id = getUuid($this->conn);
         try {
@@ -80,7 +67,8 @@ class Withdrawal
                 $Amount,
                 $CreateUserId,
                 $ModifyUserId,
-                $StatusId
+                $StatusId,
+                $ClientId
             ))) {
                 return $this->getById($id);
             }

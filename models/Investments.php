@@ -61,6 +61,51 @@ class Investments
         }
     }
 
+    public function getClientWallet($ClientId)
+    {
+        $query = "
+        SELECT
+        (
+        SELECT
+            SUM(Amount)
+        FROM
+            `withdrawal`
+        WHERE
+            `ClientId` = ?
+        GROUP BY
+            `ClientId`
+    ) AS withdrawals,
+    (
+        SELECT
+            SUM( (DATEDIFF(Now(), CreateDate)*Amount*0.005))
+        FROM
+            `investment`
+        WHERE
+            `ClientId` = ?
+        GROUP BY
+            `ClientId`
+    ) AS profit,
+    (
+        SELECT
+            SUM(Amount)
+        FROM
+            `bonus`
+        WHERE
+            `ClientId` = ?
+        GROUP BY
+            `ClientId`
+    ) AS bonuses
+    FROM DUAL
+            ";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        // Execute query
+        $stmt->execute(array($ClientId,$ClientId,$ClientId));
+
+        return $stmt;
+    }
     public function readByClientId($ClientId)
     {
         $query = "

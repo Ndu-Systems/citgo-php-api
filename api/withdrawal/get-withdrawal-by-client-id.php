@@ -2,7 +2,7 @@
  include_once '../../config/Database.php';
  include_once '../../models/Withdrawal.php';
 
- $ClientId = $_GET['ClientId'];
+$ClientId = $_GET['ClientId'];
 
  //connect to db
 $database = new Database();
