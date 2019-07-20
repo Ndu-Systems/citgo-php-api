@@ -81,7 +81,7 @@ class Investments
         FROM
             `investment`
         WHERE
-            `ClientId` = ?
+            `ClientId` = ? AND (DATEDIFF(NOW(), CreateDate)) >= 30
         GROUP BY
             `ClientId`
     ) AS profit,
