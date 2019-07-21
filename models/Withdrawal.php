@@ -17,7 +17,14 @@ class Withdrawal
 
     public function getWithdrawalsByStatus($StatusId)
     {
-        $query = "SELECT * FROM withdrawal WHERE StatusId=?";
+        $query = "SELECT
+        c.FirstName, c.Surname, c.ClientId, w.Amount, w.CreateDate
+    FROM
+        withdrawal w
+    LEFT JOIN clients c ON
+        w.ClientId = c.ClientId
+    WHERE
+        w.StatusId = ?";
 
         //Prepare statement
         $stmt = $this->conn->prepare($query);
@@ -29,7 +36,7 @@ class Withdrawal
     }
     public function getWithdrawalsForClient($ClientId)
     {
-        $query = "SELECT * from Withdrawal WHERE ClientId =?";
+        $query = "SELECT * from withdrawal w left join clients c on w.ClientId= c.ClientId WHERE w.ClientId =?";
 
         //Prepare statement
         $stmt = $this->conn->prepare($query);
