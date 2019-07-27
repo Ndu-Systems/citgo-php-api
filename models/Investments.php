@@ -252,6 +252,7 @@ class Investments
             i.Name,
             i.Type,
             i.bankId,
+            i.StatusId,
             DATEDIFF(NOW(), i.CreateDate) AS DaysNow,
             (DATEDIFF(NOW(), i.CreateDate) * Amount * 0.005) + Amount AS Growth,
             d.DocumentUrl,
