@@ -36,7 +36,7 @@ class Withdrawal
     }
     public function getWithdrawalsForClient($ClientId)
     {
-        $query = "SELECT * from withdrawal w left join clients c on w.ClientId= c.ClientId WHERE w.ClientId =?";
+        $query = "SELECT * from withdrawal  WHERE ClientId =?";
 
         //Prepare statement
         $stmt = $this->conn->prepare($query);
