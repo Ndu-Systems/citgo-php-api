@@ -6,9 +6,9 @@ $data = json_decode(file_get_contents("php://input"));
 
 $WithdrawalId=$data->WithdrawalId;
 $Amount=$data->Amount;
-$CreateUserId=$data->Amount;
-$ModifyUserId=$data->Amount;
-$StatusId=$data->Amount;
+$CreateUserId=$data->CreateUserId;
+$ModifyUserId=$data->ModifyUserId;
+$StatusId=$data->StatusId;
 //connect to db
 $database = new Database();
 $db = $database->connect();

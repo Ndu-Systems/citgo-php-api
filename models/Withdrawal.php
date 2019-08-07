@@ -18,19 +18,27 @@ class Withdrawal
     public function getWithdrawalsByStatus($StatusId)
     {
         $query = "SELECT
-        c.FirstName, c.Surname, c.ClientId, w.Amount, w.CreateDate
+        c.FirstName, 
+        c.Surname, 
+        c.ClientId, 
+        w.Amount, 
+        w.CreateDate, 
+        w.ModifyDate, 
+        w.StatusId,
+        w.WithdrawalId,
+        w.CreateUserId
     FROM
         withdrawal w
     LEFT JOIN clients c ON
         w.ClientId = c.ClientId
     WHERE
-        w.StatusId = ?";
+        w.StatusId in (?,?)";
 
         //Prepare statement
         $stmt = $this->conn->prepare($query);
 
         //Execute query
-        $stmt->execute(array($StatusId));
+        $stmt->execute($StatusId);
 
         return $stmt;
     }
@@ -93,23 +101,24 @@ class Withdrawal
         $StatusId
     ) {
         $query = "UPDATE withdrawal SET 
-      
-                    
                     Amount=?,
                     CreateUserId=?,
                     ModifyUserId=?,
-                    StatusId=?
-        where       WithdrawalId =?
+                    StatusId=?,
+                    ModifyDate = Now()
+                    where       
+                    WithdrawalId =?
         ";
         try {
             $stmt = $this->conn->prepare($query);
-            return $stmt->execute(array(
-                $WithdrawalId,
+             $stmt->execute(array(
                 $Amount,
                 $CreateUserId,
                 $ModifyUserId,
-                $StatusId
+                $StatusId,
+                $WithdrawalId
             ));
+            return $this->getById($WithdrawalId);
         } catch (Exception $e) {
             return $e;
         }
