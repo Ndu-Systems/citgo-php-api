@@ -26,7 +26,10 @@ class Stat
          
         (SELECT COUNT(*) FROM clients where StatusId =4 ) AS activeClients,
         (SELECT COUNT(*) FROM clients where StatusId = 2) AS waitingAccountConfirmation,
-        (SELECT COUNT(*) FROM clients where StatusId = 10) AS blockedClients
+        (SELECT COUNT(*) FROM clients where StatusId = 10) AS blockedClients,
+
+        (SELECT COUNT(*) FROM withdrawal where StatusId = 2) AS pendingWithdrawal
+
         
     FROM DUAL 
         ";
