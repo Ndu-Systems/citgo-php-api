@@ -142,7 +142,8 @@ class Users
         u.Email,  
         r.RoleId as Role,
         c.ClientId,
-        c.ClientRef
+        c.ClientRef,
+        c.StatusId as 'ClientStatus'
         FROM 
         users u JOIN 
         userroles ur on u.UserId = ur.UserId 

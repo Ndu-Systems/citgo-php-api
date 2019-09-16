@@ -71,7 +71,7 @@ class Investments
         FROM
             `withdrawal`
         WHERE
-            `ClientId` = ?
+            `ClientId` = ? and StatusId in (1)
         GROUP BY
             `ClientId`
     ) AS withdrawals,
@@ -160,6 +160,9 @@ class Investments
         $InvestmentId,
         $bankId
     ) {
+        if($StatusId == 1){
+            $this->updateInvestmentActivateDate($InvestmentId);
+        }
         $query = "
             UPDATE investment SET  
                 ClientId=?, 
@@ -197,6 +200,29 @@ class Investments
             return $e;
         }
     }
+
+    public function updateInvestmentActivateDate(
+        $InvestmentId
+    ) {
+        $query = "
+            UPDATE investment SET  
+               CreateDate=now()
+                WHERE 
+                InvestmentId =?
+            ";
+
+        try {
+            $stmt = $this->conn->prepare($query);
+            if ($stmt->execute(array(
+                $InvestmentId
+            ))) {
+               // return $this->getInvestmentById($InvestmentId);
+            }
+        } catch (Exception $e) {
+            return $e;
+        }
+    }
+
 
 
     public function getInvestmentById($InvestmentId)
